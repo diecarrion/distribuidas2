@@ -24,7 +24,6 @@ public class ClienteSRV {
 		// A IMPLEMENTAR
 	}
 	
-	//trabajar en esta logica. aplicar tipos de descuentos, herencias etc
 	public static float aplicarDescuentoCliente(Cliente c, float precio){
 		float mejorPrecio = precio;
 		for(DescuentoCliente dc: c.getDescuentos())
@@ -40,6 +39,6 @@ public class ClienteSRV {
 			}
 			
 		}
-		return mejorPrecio;
+		return precioDesc;
 	}
 }

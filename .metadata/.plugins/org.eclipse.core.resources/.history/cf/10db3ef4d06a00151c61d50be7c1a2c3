@@ -24,22 +24,13 @@ public class ClienteSRV {
 		// A IMPLEMENTAR
 	}
 	
-	//trabajar en esta logica. aplicar tipos de descuentos, herencias etc
 	public static float aplicarDescuentoCliente(Cliente c, float precio){
-		float mejorPrecio = precio;
+		float precioDesc = precio;
 		for(DescuentoCliente dc: c.getDescuentos())
 		{
 			//A Implementar
-			if(dc.getCondEsp() == "Procentaje")
-			{
-				float  newPrecio = precio * (dc.getPorcentaje()/100);
-				if (newPrecio < mejorPrecio)
-				{
-					mejorPrecio = newPrecio;
-				}
-			}
 			
 		}
-		return mejorPrecio;
+		return precioDesc;
 	}
 }

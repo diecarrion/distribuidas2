@@ -6,7 +6,6 @@ public class DescuentoCliente {
 	private String condEsp;
 	private float montoDescuento;
 	private float porcentaje;
-	private int cuotas;
 	private Date vigenteHasta;
 	
 	
@@ -61,7 +60,6 @@ public class DescuentoCliente {
 	public void setVigenteHasta(Date vigenteHasta) {
 		this.vigenteHasta = vigenteHasta;
 	}
-		
 
 
 }
