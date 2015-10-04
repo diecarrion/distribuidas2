@@ -1,0 +1,52 @@
+package interfaz;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.*;
+
+public interface ISistemaRemote extends Remote {
+	
+	//Oficina de ventas
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos) throws RemoteException;
+	
+	public FacturaVO generarVenta(int idCliente, int idCotizacion) throws RemoteException;
+	
+	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, RemitoTransporteVO remitoTransporte) throws RemoteException;
+	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, int idOficinaVenta) throws RemoteException;
+	
+	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException;
+	
+	public void bajaCliente(int idCliente) throws RemoteException;
+	
+	public ClienteVO buscarCliente(int idCliente) throws RemoteException;
+	
+	//Casa Central
+	
+	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion) throws RemoteException;
+	
+	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion) throws RemoteException;
+	
+	public void bajaProveedor(int idProveedor) throws RemoteException;
+	
+	public ComparativaPrecioVO procesarListaPreciosProgramada() throws RemoteException;
+	
+	public ComparativaPrecioVO publicarPreciosComparados(List<ListaPrecioVO> listaPrecios) throws RemoteException;
+	
+	public List<OrdenCompraProveedorVO> comprarRodamientos(List<OrdenCompraClienteVO> ordenesCompraCliente) throws RemoteException;
+	
+	public List<BultoCCVO> generarEntrega(List<RodamientoVO> listaRodamientos, List<RemitoProveedorVO> remitosProveedor) throws RemoteException;
+	
+	public void altaStock(int idRodamiento, int cantidadInicial, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException;
+	
+	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException;
+	
+	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException;
+	
+	public ProveedorVO buscarProveedor (int idProveedor) throws RemoteException;
+	
+
+}

@@ -1,0 +1,18 @@
+package bean.srv;
+
+import entities.*;
+
+public class ClienteSRV {
+/*	private static ClienteDAO dao;
+	static {
+		dao = ClienteDAO.getInstancia();
+	}*/
+	public static void altaCliente(Cliente cliente){
+		//dao.grabarCliente(cliente);
+	}
+	
+	public static Cliente buscarCliente(int idCliente){
+		//dao.grabarCliente(cliente);
+		return new Cliente();
+	}
+}

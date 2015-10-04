@@ -1,0 +1,17 @@
+package Controladores;
+import java.rmi.RemoteException;
+
+import dto.*;
+import bean.*;
+
+public class CotizacionControlador {
+
+	static CotizacionControlador controlador;
+	
+	public static CotizacionControlador getControlador() {
+		if(controlador == null ){
+			controlador=new CotizacionControlador();
+		}
+		return controlador;
+	}
+}

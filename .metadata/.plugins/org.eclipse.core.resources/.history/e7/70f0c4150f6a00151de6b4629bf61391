@@ -1,0 +1,34 @@
+package interfaz;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.*;
+
+public interface ISistemaRemote extends Remote {
+	
+	//Oficina de ventas
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos);
+	
+	public FacturaVO generarVenta(int idCliente, int idCotizacion);
+	
+	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, RemitoTransporteVO remitoTransporte);
+	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, int idOficinaVenta);
+	
+	public void modificacionCliente(int idCliente, String identificacion, String telefono, String direccion);
+	
+	public void bajaCliente(int idCliente);
+	
+	public ClienteVO buscarCliente(int idCliente);
+	
+	//Casa Central
+	
+	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion);
+	
+	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion);
+	
+
+}

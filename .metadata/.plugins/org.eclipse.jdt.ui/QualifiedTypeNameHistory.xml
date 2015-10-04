@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="entities.BultoCC"/>
+<fullyQualifiedTypeName name="entities.EstadoOrdenCompraCliente"/>
+<fullyQualifiedTypeName name="entities.ComparativaPrecio"/>
+<fullyQualifiedTypeName name="entities.RemitoTransporte"/>
+<fullyQualifiedTypeName name="entities.Factura"/>
+<fullyQualifiedTypeName name="entities.OrdenCompraProveedor"/>
+<fullyQualifiedTypeName name="entities.OrdenCompraCliente"/>
+<fullyQualifiedTypeName name="entities.RemitoCliente"/>
+<fullyQualifiedTypeName name="entities.OficinaVenta"/>
+<fullyQualifiedTypeName name="rmi.SistemaRemote"/>
+<fullyQualifiedTypeName name="dto.OrdenCompraProveedorVO"/>
+<fullyQualifiedTypeName name="dto.OrdenCompraClienteVO"/>
+<fullyQualifiedTypeName name="dto.BultoCCVO"/>
+<fullyQualifiedTypeName name="dto.RemitoProveedorVO"/>
+<fullyQualifiedTypeName name="java.rmi.RemoteException"/>
+<fullyQualifiedTypeName name="dto.ComparativaPrecioVO"/>
+<fullyQualifiedTypeName name="dto.RemitoTransporteVO"/>
+<fullyQualifiedTypeName name="bean.srv.OficinaVentaSRV"/>
+<fullyQualifiedTypeName name="dto.OficinaVentaVO"/>
+<fullyQualifiedTypeName name="dto.ClienteVO"/>
+<fullyQualifiedTypeName name="Controladores.ClienteControlador"/>
+<fullyQualifiedTypeName name="entities.Cliente"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="entities.ListaPrecio"/>
+<fullyQualifiedTypeName name="dto.ListaPrecioVO"/>
+<fullyQualifiedTypeName name="dto.RodamientoCotizadoVO"/>
+<fullyQualifiedTypeName name="entities.RodamientoCotizado"/>
+<fullyQualifiedTypeName name="dto.RodamientoVO"/>
+<fullyQualifiedTypeName name="bean.srv.ComparativaPrecioSRV"/>
+<fullyQualifiedTypeName name="entities.Rodamiento"/>
+<fullyQualifiedTypeName name="bean.srv.ClienteSRV"/>
+<fullyQualifiedTypeName name="entities.DescuentoCliente"/>
+<fullyQualifiedTypeName name="dto.ProveedorVO"/>
+<fullyQualifiedTypeName name="entities.Proveedor"/>
+<fullyQualifiedTypeName name="bean.srv.ProveedorSRV"/>
+<fullyQualifiedTypeName name="Controladores.ProveedorControlador"/>
+<fullyQualifiedTypeName name="Controladores.CotizacionControlador"/>
+</qualifiedTypeNameHistroy>

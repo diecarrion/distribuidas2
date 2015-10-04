@@ -1,0 +1,110 @@
+package rmi;
+
+import interfaz.ISistemaRemote;
+
+import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
+
+import dto.*;
+
+
+//importar controladores
+
+public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote {
+
+	public SistemaRemote() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos) throws RemoteException
+	{
+		return new CotizacionVO();
+	}
+	
+	public FacturaVO generarVenta(int idCliente, int idCotizacion) throws RemoteException
+	{
+		return new FacturaVO();
+	}
+	
+	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, RemitoTransporteVO remitoTransporte) throws RemoteException
+	{
+		return null;		
+	}
+	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException
+	{
+		
+	}
+	
+	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException
+	{
+		
+	}
+	
+	public void bajaCliente(int idCliente) throws RemoteException
+	{
+		
+	}
+	
+	public ClienteVO buscarCliente(int idCliente) throws RemoteException
+	{
+		return new ClienteVO();
+	}
+	
+	//Casa Central
+	
+	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion) throws RemoteException
+	{
+		
+	}
+	
+	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion) throws RemoteException
+	{
+		
+	}
+	
+	public void bajaProveedor(int idProveedor) throws RemoteException
+	{
+	}
+	
+	public ComparativaPrecioVO procesarListaPreciosProgramada() throws RemoteException
+	{
+		return new ComparativaPrecioVO();
+	}
+	
+	public ComparativaPrecioVO publicarPreciosComparados(List<ListaPrecioVO> listaPrecios) throws RemoteException
+	{
+		return new ComparativaPrecioVO();
+	}
+	
+	public List<OrdenCompraProveedorVO> comprarRodamientos(List<OrdenCompraClienteVO> ordenesCompraCliente) throws RemoteException
+	{
+		return null;
+	}
+	
+	public List<BultoCCVO> generarEntrega(List<RodamientoVO> listaRodamientos, List<RemitoProveedorVO> remitosProveedor) throws RemoteException
+	{
+		return null;
+	}
+	
+	public void altaStock(int idRodamiento, int cantidadInicial, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
+	{
+	}
+	
+	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
+	{
+	}
+	
+	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException
+	{
+		return new RemitoTransporteVO();
+	}
+	
+	public ProveedorVO buscarProveedor (int idProveedor) throws RemoteException
+	{
+		return new ProveedorVO();
+	}
+
+}

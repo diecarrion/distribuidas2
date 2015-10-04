@@ -1,0 +1,10 @@
+package bean.srv;
+
+public class ProveedorSRV {
+
+	/*	private static ProveedorDAO dao;
+	static {
+		dao = ProveedorDAO.getInstancia();
+	}*/
+	
+}

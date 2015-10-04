@@ -1,0 +1,52 @@
+package interfaz;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.*;
+
+public interface ISistemaRemote extends Remote {
+	
+	//Oficina de ventas
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos);
+	
+	public FacturaVO generarVenta(int idCliente, int idCotizacion);
+	
+	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, RemitoTransporteVO remitoTransporte);
+	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, int idOficinaVenta);
+	
+	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion);
+	
+	public void bajaCliente(int idCliente);
+	
+	public ClienteVO buscarCliente(int idCliente);
+	
+	//Casa Central
+	
+	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion);
+	
+	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion);
+	
+	public void bajaProveedor(int idProveedor);
+	
+	public ComparativaPrecioVO procesarListaPreciosProgramada();
+	
+	public ComparativaPrecioVO publicarPreciosComparados(List<ListaPrecioVO> listaPrecios);
+	
+	public List<OrdenCompraProveedorVO> comprarRodamientos(List<OrdenCompraClienteVO> ordenesCompraCliente);
+	
+	public List<BultoCCVO> generarEntrega(List<RodamientoVO> listaRodamientos, List<RemitoProveedorVO> remitosProveedor);
+	
+	public void altaStock(int idRodamiento, int cantidadInicial, float precioUnidad, int idOrdenCompraProveedor);
+	
+	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor);
+	
+	public RemitoTransporteVO buscarRemito(int idRemito);
+	
+	public ProveedorVO buscarProveedor (int idProveedor);
+	
+
+}

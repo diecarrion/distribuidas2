@@ -1,0 +1,30 @@
+package Controladores;
+import java.rmi.RemoteException;
+import java.util.List;
+import dto.*;
+import entities.*;
+import bean.srv.ClienteSRV;
+
+public class CotizacionControlador {
+
+	static CotizacionControlador controlador;
+	
+	public static CotizacionControlador getControlador() {
+		if(controlador == null ){
+			controlador=new CotizacionControlador();
+		}
+		return controlador;
+	}
+	
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c!= null)
+		{
+			for (Rodamiento p : ClienteSRV.getClientesParticulares()) {
+				particularesDTO.add(p.toDTO());
+			}
+			
+		}
+	}
+}

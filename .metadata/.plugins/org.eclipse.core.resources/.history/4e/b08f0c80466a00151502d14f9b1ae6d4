@@ -1,0 +1,59 @@
+package Controladores;
+import java.rmi.RemoteException;
+
+import dto.*;
+import entities.Cliente;
+import bean.*;
+import bean.srv.ClienteSRV;
+import bean.srv.OficinaVentaSRV;
+
+public class ProveedorControlador {
+	
+	static ProveedorControlador controlador;
+	
+	public static ProveedorControlador getControlador() {
+		if(controlador == null ){
+			controlador=new ProveedorControlador();
+		}
+		return controlador;
+	}
+	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException
+	{
+		Cliente c = new Cliente(identificacion,cuit,telefono, direccion, provincia, OficinaVentaSRV.getOficinaVenta(idOficinaVenta));
+		ClienteSRV.altaCliente(c);
+	}
+	
+	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c != null)
+		{
+			c.setIdentificacion(identificacion);
+			c.setTelefono(telefono);
+			c.setDireccion(direccion);
+			ClienteSRV.modificarCliente(c);
+		}
+	}
+
+	public void bajaCliente(int idCliente) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c != null)
+		{
+			ClienteSRV.bajaCliente(c);
+		}
+	}
+	
+	public ProveedorVO buscarProveedor(int idProveedor) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c != null)
+		{
+			return c.toVO();
+		}
+		
+		return null;
+	}
+
+}

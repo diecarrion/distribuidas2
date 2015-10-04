@@ -1,0 +1,67 @@
+package dto;
+
+import java.util.Date;
+
+public class Pedido {
+	
+	private int id;
+	private Date fecha;
+	private OficinaVenta oficina;
+	private ClienteVO cliente;
+	private Cotizacion cotizacion;
+	
+	public Pedido() {
+
+	}
+	
+	public Pedido(int id, Date fecha, OficinaVenta oficina, ClienteVO cliente, Cotizacion cotizacion){
+		this.id = id;
+		this.fecha = fecha;
+		this.oficina = oficina;
+		this.cliente = cliente;
+		this.cotizacion = cotizacion;
+	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	
+	public OficinaVenta getOficinaVenta() {
+		return oficina;
+	}
+
+	public void setOficinaVenta(OficinaVenta oficina) {
+		this.oficina = oficina;
+	}
+	
+	
+	public ClienteVO getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(ClienteVO cliente) {
+		this.cliente = cliente;
+	}
+	
+	public Cotizacion getCotizacion() {
+		return cotizacion;
+	}
+
+	public void setCotizacion(Cotizacion cotizacion) {
+		this.cotizacion = cotizacion;
+	}	
+}

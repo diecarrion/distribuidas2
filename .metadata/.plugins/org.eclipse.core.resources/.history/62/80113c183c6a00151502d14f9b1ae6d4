@@ -1,0 +1,12 @@
+package bean.srv;
+
+import entities.Cliente;
+
+public class ComparativaPrecioSRV {
+
+	
+	
+	public static ListaPrecio mejorPrecio(Rodamiento rodamiento){
+		// A IMPLEMENTAR
+	}
+}

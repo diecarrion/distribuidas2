@@ -1,0 +1,43 @@
+package dto;
+
+import java.util.Date;
+
+public class RemitoTransporte {
+	private int id;
+	private Date fecha;
+	private OficinaVentaVO oficina;
+	
+	public RemitoTransporte() {
+
+	}
+
+	public RemitoTransporte(int id, Date fecha, OficinaVentaVO oficina){
+		this.id = id;
+		this.fecha = fecha;
+		this.oficina = oficina;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	public OficinaVentaVO getOficinaVenta() {
+		return oficina;
+	}
+
+	public void setOficinaVenta(OficinaVentaVO oficina) {
+		this.oficina = oficina;
+	}
+}

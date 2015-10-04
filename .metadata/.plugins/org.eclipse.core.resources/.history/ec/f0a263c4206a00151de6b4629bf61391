@@ -1,0 +1,52 @@
+package entities;
+import java.util.*;
+
+public class Cotizacion {
+	
+	private int id;
+	private Date fecha;
+	private float precioTotal;
+	private OficinaVenta oficina;
+	private List<Rodamiento> rodamientos;
+	
+	public Cotizacion() {
+
+	}
+
+	public Cotizacion(int id, Date fecha, OficinaVenta oficina){
+		this.id = id;
+		this.fecha = fecha;
+		this.oficina = oficina;
+		this.precioTotal = precioTotal;
+		this.rodamientos = new ArrayList<Rodamiento>();
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	public OficinaVenta getOficinaVenta() {
+		return oficina;
+	}
+
+	public void setOficinaVenta(OficinaVenta oficina) {
+		this.oficina = oficina;
+	}
+	
+	public void setRodamientos(List<Rodamiento> rodamientos) {
+		this.rodamientos = rodamientos;
+	}
+
+}

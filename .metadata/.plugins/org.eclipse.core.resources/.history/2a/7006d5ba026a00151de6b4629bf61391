@@ -1,0 +1,13 @@
+package rmi;
+
+import interfaz.ISistemaRemote;
+import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
+import dto.*;
+
+
+//importar controladores
+
+public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote {
+
+}

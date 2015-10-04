@@ -1,0 +1,20 @@
+package entities;
+
+import java.util.ArrayList;
+
+public class RodamientoCotizado {
+	private int id;
+	private Rodamiento rodamiento;
+	private float precioTotal;
+	private Proveedor proveedor;
+	public Rodamiento() {
+
+	}
+	
+	public Rodamiento(Rodamiento rodamiento, float precioTotal, Proveedor proveedor){
+		this.rodamiento = rodamiento;
+		this.precioTotal = precioTotal;
+		this.proveedor = proveedor;
+	}
+
+}

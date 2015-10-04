@@ -1,0 +1,49 @@
+package dto;
+import java.util.Date;
+import java.util.List;
+
+import entities.Rodamiento;
+
+public class CotizacionVO {
+	
+	private int id;
+	private Date fecha;
+	private OficinaVentaVO oficina;
+	private List<RodamientoVO> rodamientos;
+	
+	public CotizacionVO() {
+
+	}
+
+	public CotizacionVO(Date fecha, OficinaVentaVO oficina){
+		this.id = id;
+		this.fecha = fecha;
+		this.oficina = oficina;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	public OficinaVentaVO getOficinaVenta() {
+		return oficina;
+	}
+
+	public void setOficinaVenta(OficinaVentaVO oficina) {
+		this.oficina = oficina;
+	}
+	
+
+}

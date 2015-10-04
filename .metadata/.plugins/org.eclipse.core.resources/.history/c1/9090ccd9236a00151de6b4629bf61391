@@ -1,0 +1,43 @@
+package Controladores;
+import java.rmi.RemoteException;
+import java.util.*;
+import dto.*;
+import entities.*;
+import bean.srv.ClienteSRV;
+
+public class CotizacionControlador {
+
+	static CotizacionControlador controlador;
+	
+	public static CotizacionControlador getControlador() {
+		if(controlador == null ){
+			controlador=new CotizacionControlador();
+		}
+		return controlador;
+	}
+	
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos, Date validez) throws RemoteException
+	{
+		List<ListaPrecioVO> listaPrecios = new ArrayList<ListaPrecioVO>();
+		List<RodamientoVO> rodDisponibles = new ArrayList<RodamientoVO>();
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		float total = 0;
+		if(c!= null)
+		{
+			CotizacionVO cot = new CotizacionVO(validez, c.toVO().getOficinaVenta());
+			for (RodamientoVO p : listaRodamientos) {
+				//comparativa precios , EnLinea devuelve la mejor lista de precio
+				ListaPrecio  lp = new ListaPrecio();
+				if(lp!=null)
+				{
+					total += lp.getPrecio();
+					listaPrecios.add(lp.toVO());
+					rodDisponibles.add(p);
+				}
+			}
+			
+			cot.setRodamientos(rodDisponibles);
+			
+		}
+	}
+}

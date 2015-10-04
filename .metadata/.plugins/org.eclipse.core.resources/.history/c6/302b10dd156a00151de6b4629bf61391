@@ -1,0 +1,19 @@
+package Controladores;
+
+import java.rmi.RemoteException;
+import dto.*;
+import bean.*;
+
+public class ClienteControlador {
+	
+	static ClienteControlador controlador;
+	
+	public static ClienteControlador getControlador() {
+		if(controlador == null ){
+			controlador=new ClienteControlador();
+		}
+		return controlador;
+	}
+
+
+}

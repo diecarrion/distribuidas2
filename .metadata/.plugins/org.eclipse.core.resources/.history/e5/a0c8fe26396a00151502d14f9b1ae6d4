@@ -1,0 +1,9 @@
+package entities;
+
+public class RodamientoCotizado {
+	private int id;
+	private Rodamiento rodamiento;
+	private float precioTotal;
+	private Proveedor proveedor;
+
+}

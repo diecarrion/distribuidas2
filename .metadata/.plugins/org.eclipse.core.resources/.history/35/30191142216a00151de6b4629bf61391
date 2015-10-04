@@ -1,0 +1,32 @@
+package Controladores;
+import java.rmi.RemoteException;
+import java.util.*;
+import dto.*;
+import entities.*;
+import bean.srv.ClienteSRV;
+
+public class CotizacionControlador {
+
+	static CotizacionControlador controlador;
+	
+	public static CotizacionControlador getControlador() {
+		if(controlador == null ){
+			controlador=new CotizacionControlador();
+		}
+		return controlador;
+	}
+	
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos) throws RemoteException
+	{
+		List<ListaPrecioVO> listaPrecios = new ArrayList<ListaPrecioVO>();
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c!= null)
+		{
+			for (RodamientoVO p : listaRodamientos) {
+				//comparativa precios , devuelve la mejor lista de precio
+				ListaPrecio  listaPrecio = new ListaPrecio();
+			}
+			
+		}
+	}
+}

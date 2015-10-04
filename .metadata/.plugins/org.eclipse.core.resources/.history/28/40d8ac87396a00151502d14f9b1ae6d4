@@ -1,0 +1,52 @@
+package dto;
+
+import java.util.ArrayList;
+
+public class RodamientoCotizado {
+	private int id;
+	private Rodamiento rodamiento;
+	private float precioTotal;
+	private Proveedor proveedor;
+	public RodamientoCotizado() {
+
+	}
+	
+	public RodamientoCotizado(Rodamiento rodamiento, float precioTotal, Proveedor proveedor){
+		this.rodamiento = rodamiento;
+		this.precioTotal = precioTotal;
+		this.proveedor = proveedor;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Rodamiento getRodamiento() {
+		return rodamiento;
+	}
+
+	public void setRodamiento(Rodamiento rodamiento) {
+		this.rodamiento = rodamiento;
+	}
+	
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+	
+	public float getPrecioTotal() {
+		return precioTotal;
+	}
+
+	public void setPrecioTotal(float precio) {
+		this.precioTotal = precio;
+	}
+
+}
