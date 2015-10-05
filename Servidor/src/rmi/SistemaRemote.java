@@ -9,7 +9,9 @@ import java.util.List;
 
 import Controladores.ClienteControlador;
 import Controladores.CotizacionControlador;
+import Controladores.EntregaControlador;
 import Controladores.ProveedorControlador;
+import Controladores.VentaControlador;
 import dto.*;
 
 
@@ -22,19 +24,19 @@ public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote
 		// TODO Auto-generated constructor stub
 	}
 	
-	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos, Date validez) throws RemoteException
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException
 	{
 		return CotizacionControlador.getControlador().generarCotizacion(idCliente, listaRodamientos, validez);
 	}
 	
-	public FacturaVO generarVenta(int idCliente, int idCotizacion) throws RemoteException
+	public OrdenCompraClienteVO generarVenta(int idCliente, int idCotizacion, Date fechaVenta) throws RemoteException
 	{
-		return new FacturaVO();
+		return VentaControlador.getControlador().generarVenta(idCliente, idCotizacion, fechaVenta);
 	}
 	
-	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, RemitoTransporteVO remitoTransporte) throws RemoteException
+	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, BultoCCVO bultoCC) throws RemoteException
 	{
-		return null;		
+		return EntregaControlador.getControlador().generarEntrega(idsOrdenCompra, bultoCC);	
 	}
 	
 	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException

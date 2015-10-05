@@ -2,6 +2,9 @@ package entities;
 
 import java.util.Date;
 
+import dto.OrdenCompraClienteVO;
+import dto.ProveedorVO;
+
 public class OrdenCompraCliente {
 	private int numero;
 	private Date fecha;
@@ -14,8 +17,7 @@ public class OrdenCompraCliente {
 
 	}
 
-	public OrdenCompraCliente(int num, Date fecha, OficinaVenta oficina, Cliente cliente, RemitoCliente remito, Pedido pedido){
-		this.numero = num;
+	public OrdenCompraCliente(Date fecha, OficinaVenta oficina, Cliente cliente, RemitoCliente remito, Pedido pedido){
 		this.fecha = fecha;
 		this.oficina = oficina;
 		this.cliente = cliente;
@@ -70,5 +72,9 @@ public class OrdenCompraCliente {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
+	
+	public OrdenCompraClienteVO toVO(){
+		return new OrdenCompraClienteVO(this.getNumero(),this.getFecha(),this.getOficinaVenta().toVO(),this.getCliente().toVO(), this.getRemitoCliente().toVO(), this.getPedido().toVO());
+}
 
 }

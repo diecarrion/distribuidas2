@@ -1,20 +1,22 @@
 package entities;
 
-import java.util.Date;
+import java.util.*;
 
 public class BultoCC {
 	private int id;
 	private Date fecha;
 	private RemitoTransporte remito;
+	private List<OrdenCompraProveedor> ordenes;
 	
 	public BultoCC() {
 
 	}
 
-	public BultoCC(int id, Date fecha, RemitoTransporte remito){
+	public BultoCC(int id, Date fecha, RemitoTransporte remito, List<OrdenCompraProveedor> ordenes){
 		this.id = id;
 		this.fecha = fecha;
 		this.remito = remito;
+		this.ordenes = ordenes;
 	}
 	
 	public int getId() {
@@ -39,6 +41,14 @@ public class BultoCC {
 
 	public void setRemitoTransporte(RemitoTransporte remito) {
 		this.remito = remito;
+	}
+	
+	public List<OrdenCompraProveedor> getOrdenesCompra() {
+		return ordenes;
+	}
+
+	public void setOrdenesCompra(List<OrdenCompraProveedor> ordenes) {
+		this.ordenes = ordenes;
 	}
 	
 }

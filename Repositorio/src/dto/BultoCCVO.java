@@ -1,20 +1,24 @@
 package dto;
 
 import java.util.Date;
+import java.util.List;
+
 
 public class BultoCCVO {
 	private int id;
 	private Date fecha;
 	private RemitoTransporteVO remito;
+	private List<OrdenCompraProveedorVO> ordenes;
 	
 	public BultoCCVO() {
 
 	}
 
-	public BultoCCVO(int id, Date fecha, RemitoTransporteVO remito){
+	public BultoCCVO(int id, Date fecha, RemitoTransporteVO remito, List<OrdenCompraProveedorVO> ordenes){
 		this.id = id;
 		this.fecha = fecha;
 		this.remito = remito;
+		this.ordenes = ordenes;
 	}
 	
 	public int getId() {
@@ -39,6 +43,14 @@ public class BultoCCVO {
 
 	public void setRemitoTransporte(RemitoTransporteVO remito) {
 		this.remito = remito;
+	}
+	
+	public List<OrdenCompraProveedorVO> getOrdenesCompra() {
+		return ordenes;
+	}
+
+	public void setOrdenesCompra(List<OrdenCompraProveedorVO> ordenes) {
+		this.ordenes = ordenes;
 	}
 	
 }

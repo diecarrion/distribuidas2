@@ -1,6 +1,8 @@
 package entities;
 import java.util.*;
 
+import dto.*;
+
 public class Cotizacion {
 	
 	private int id;
@@ -51,8 +53,16 @@ public class Cotizacion {
 		this.oficina = oficina;
 	}
 	
+	public List<RodamientoCotizado> getRodamientos() {
+		return rodamientos;
+	}
+	
 	public void setRodamientos(List<RodamientoCotizado> rodamientos) {
 		this.rodamientos = rodamientos;
 	}
+	
+	public CotizacionVO toVO(){
+		return new CotizacionVO(this.getFecha(),this.getOficinaVenta().toVO());
+}
 
 }

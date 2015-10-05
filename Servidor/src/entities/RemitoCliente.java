@@ -2,6 +2,9 @@ package entities;
 
 import java.util.Date;
 
+import dto.FacturaVO;
+import dto.RemitoClienteVO;
+
 public class RemitoCliente {
 	private int id;
 	private Date fecha;
@@ -11,9 +14,8 @@ public class RemitoCliente {
 
 	}
 
-	public RemitoCliente(int id, Date fecha, Cliente cliente){
-		this.id = id;
-		this.fecha = fecha;
+	public RemitoCliente(Date fecha, Cliente cliente){
+			this.fecha = fecha;
 		this.cliente = cliente;
 	}
 	
@@ -39,5 +41,9 @@ public class RemitoCliente {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public RemitoClienteVO toVO(){
+		return new RemitoClienteVO(this.getId(),this.getFecha(),this.getCliente().toVO());
 	}
 }

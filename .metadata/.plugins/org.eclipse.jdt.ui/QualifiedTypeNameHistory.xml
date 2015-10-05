@@ -25,7 +25,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="entities.ListaPrecio"/>
 <fullyQualifiedTypeName name="dto.ListaPrecioVO"/>
-<fullyQualifiedTypeName name="dto.RodamientoCotizadoVO"/>
 <fullyQualifiedTypeName name="entities.RodamientoCotizado"/>
 <fullyQualifiedTypeName name="dto.RodamientoVO"/>
 <fullyQualifiedTypeName name="bean.srv.ComparativaPrecioSRV"/>
@@ -37,4 +36,6 @@
 <fullyQualifiedTypeName name="bean.srv.ProveedorSRV"/>
 <fullyQualifiedTypeName name="Controladores.ProveedorControlador"/>
 <fullyQualifiedTypeName name="Controladores.CotizacionControlador"/>
+<fullyQualifiedTypeName name="dto.RodamientoCotizadoVO"/>
+<fullyQualifiedTypeName name="dto.FacturaVO"/>
 </qualifiedTypeNameHistroy>

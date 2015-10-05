@@ -5,16 +5,18 @@ import java.util.ArrayList;
 public class RodamientoCotizado {
 	private int id;
 	private Rodamiento rodamiento;
-	private float precioTotal;
+	private float precioUnit;
+	private int cantidad;
 	private Proveedor proveedor;
 	public RodamientoCotizado() {
 
 	}
 	
-	public RodamientoCotizado(Rodamiento rodamiento, float precioTotal, Proveedor proveedor){
+	public RodamientoCotizado(Rodamiento rodamiento, float precioUnit, Proveedor proveedor, int cantidad){
 		this.rodamiento = rodamiento;
-		this.precioTotal = precioTotal;
+		this.precioUnit = precioUnit;
 		this.proveedor = proveedor;
+		this.cantidad = cantidad;
 	}
 	
 	public int getId() {
@@ -41,12 +43,21 @@ public class RodamientoCotizado {
 		this.proveedor = proveedor;
 	}
 	
-	public float getPrecioTotal() {
-		return precioTotal;
+	public float getPrecioUnitario() {
+		return precioUnit;
 	}
 
-	public void setPrecioTotal(float precio) {
-		this.precioTotal = precio;
+	public void setPrecioUnitario(float precio) {
+		this.precioUnit = precio;
+	}
+	
+	
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 }

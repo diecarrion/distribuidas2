@@ -1,6 +1,9 @@
 package entities;
 
-import java.util.Date;
+import java.util.*;
+
+import dto.BultoOVVO;
+import dto.PedidoVO;
 
 public class BultoOV {
 	private int id;
@@ -9,18 +12,18 @@ public class BultoOV {
 	private Factura factura;
 	private Cliente cliente;
 	private RemitoCliente remito;
+	private List<OrdenCompraCliente> ordenes;
 	
 	public BultoOV() {
 
 	}
 
-	public BultoOV(int id, Date fecha, OficinaVenta oficina, Factura factura, Cliente cliente, RemitoCliente remito){
-		this.id = id;
+	public BultoOV(Date fecha, OficinaVenta oficina, Cliente cliente, RemitoCliente remito){
 		this.fecha = fecha;
 		this.oficina = oficina;
-		this.factura = factura;
 		this.cliente = cliente;
 		this.remito = remito;
+		this.ordenes = new ArrayList<OrdenCompraCliente>();
 	}
 	
 	public int getId() {
@@ -69,5 +72,17 @@ public class BultoOV {
 
 	public void setRemitoCliente(RemitoCliente remito) {
 		this.remito = remito;
+	}
+	
+	public List<OrdenCompraCliente> getOrdenes() {
+		return ordenes;
+	}
+
+	public void addOrdenCompraCliente(OrdenCompraCliente oc) {
+		this.ordenes.add(oc);
+	}
+	
+	public BultoOVVO toVO(){
+		return new BultoOVVO(this.getId(),this.getFecha(), this.getOficinaVenta().toVO(), this.getCliente().toVO(),this.getRemitoCliente().toVO());
 	}
 }

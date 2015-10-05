@@ -1,6 +1,9 @@
 package entities;
 
 import java.util.*;
+
+import dto.ProveedorVO;
+import dto.RodamientoVO;
 public class Rodamiento {
 
 	private int id;
@@ -14,8 +17,7 @@ public class Rodamiento {
 
 	}
 	
-	public Rodamiento(int id, String codigoSKF, String caracteristicas, String marca, String origen){
-		this.id = id;
+	public Rodamiento(String codigoSKF, String caracteristicas, String marca, String origen){
 		this.codigoSKF = codigoSKF;
 		this.caracteristicas = caracteristicas;
 		this.marca = marca;
@@ -62,5 +64,9 @@ public class Rodamiento {
 	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
+	
+	public RodamientoVO toVO(){
+		return new RodamientoVO(this.getCodigoSKF(),this.getCaracteristicas(), this.getMarca(), this.getOrigen());
+}
 	
 }

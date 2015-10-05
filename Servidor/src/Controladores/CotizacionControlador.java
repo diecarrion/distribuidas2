@@ -18,7 +18,7 @@ public class CotizacionControlador {
 		return controlador;
 	}
 	
-	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos, Date validez) throws RemoteException
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException
 	{
 		List<RodamientoCotizadoVO> rodCotizados = new ArrayList<RodamientoCotizadoVO>();
 		Cliente c = ClienteSRV.buscarCliente(idCliente);
@@ -26,24 +26,24 @@ public class CotizacionControlador {
 		if(c!= null)
 		{
 			CotizacionVO cot = new CotizacionVO(validez, c.toVO().getOficinaVenta());
-			for (RodamientoVO p : listaRodamientos) {
-				Rodamiento r =  new Rodamiento(p.getId(), p.getCodigoSKF(), p.getCaracteristicas(), p.getMarca(), p.getOrigen());
+			for (RodamientoCotizadoVO p : listaRodamientos) {
+				Rodamiento r =  new Rodamiento(p.getRodamiento().getCodigoSKF(), p.getRodamiento().getCaracteristicas(), p.getRodamiento().getMarca(), p.getRodamiento().getOrigen());
 				ListaPrecio mejorLista = ComparativaPrecioSRV.mejorPrecio(r);
 				if(mejorLista!=null)
 				{
-					float precioDescuento = ClienteSRV.aplicarDescuentoCliente(c, mejorLista.getPrecio());
-					total += precioDescuento;
-					RodamientoCotizadoVO rc = new RodamientoCotizadoVO(p,total,mejorLista.getProveedor().toVO());
+					RodamientoCotizadoVO rc = new RodamientoCotizadoVO(r.toVO(),mejorLista.getPrecio(),mejorLista.getProveedor().toVO(), p.getCantidad());
+					total += mejorLista.getPrecio();
 					rodCotizados.add(rc);
 				}
 			}
 			
-			cot.setRodamientos(rodCotizados);
-			cot.setPrecioTotal(total);
+			float totalDescuento = ClienteSRV.aplicarDescuentoCliente(c, total);
 			
+			cot.setRodamientos(rodCotizados);
+			cot.setPrecioTotal(totalDescuento);
 			return cot;
 		}
-		
+			
 		return null;
 	}
 }

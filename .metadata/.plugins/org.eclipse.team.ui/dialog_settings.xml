@@ -10,9 +10,9 @@
 		</section>
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1443913977538">
 		</section>
-		<section name="org.eclipse.egit.ui.modelCompareParticipant.1443930094820">
-		</section>
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1443914365301">
+		</section>
+		<section name="org.eclipse.egit.ui.modelCompareParticipant.1443930094820">
 		</section>
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1443914810915">
 		</section>
@@ -24,5 +24,7 @@
 		</section>
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1443484675734">
 		</section>
+	</section>
+	<section name="SynchronizeWizard">
 	</section>
 </section>

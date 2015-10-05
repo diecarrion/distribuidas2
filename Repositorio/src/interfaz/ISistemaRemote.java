@@ -11,11 +11,11 @@ import dto.*;
 public interface ISistemaRemote extends Remote {
 	
 	//Oficina de ventas
-	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoVO> listaRodamientos, Date validez) throws RemoteException;
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException;
 	
-	public FacturaVO generarVenta(int idCliente, int idCotizacion) throws RemoteException;
+	public OrdenCompraClienteVO generarVenta(int idCliente, int idCotizacion, Date fechaVenta) throws RemoteException;
 	
-	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, RemitoTransporteVO remitoTransporte) throws RemoteException;
+	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, BultoCCVO bultoCC) throws RemoteException;
 	
 	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException;
 	

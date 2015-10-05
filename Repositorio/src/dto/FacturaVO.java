@@ -1,6 +1,7 @@
 package dto;
 
-import java.util.Date;
+import java.util.*;
+import java.util.List;
 
 public class FacturaVO {
 
@@ -9,19 +10,21 @@ public class FacturaVO {
 	private float montoTotal;
 	private OficinaVentaVO oficina;
 	private ClienteVO cliente;
+	private List<ItemFacturaVO> items;
 	
 	public FacturaVO()
 	{
 		
 	}
 
-	public FacturaVO(int id, Date fecha, float montoTotal, OficinaVentaVO oficina, ClienteVO cliente)
+	public FacturaVO(int id, Date fecha, float montoTotal, OficinaVentaVO oficina, ClienteVO cliente, List<ItemFacturaVO> items)
 	{
 		this.id = id;
 		this.fecha = fecha;
 		this.montoTotal = montoTotal;
 		this.oficina= oficina;
 		this.cliente = cliente;
+		this.items = items;
 	}
 	
 	public int getId() {
@@ -61,5 +64,13 @@ public class FacturaVO {
 
 	public void setOficinaVenta(OficinaVentaVO oficina) {
 		this.oficina = oficina;
+	}
+	
+	public List<ItemFacturaVO> getItemsFactura() {
+		return items;
+	}
+
+	public void setItemsFactura(List<ItemFacturaVO> items) {
+		this.items = items;
 	}
 }

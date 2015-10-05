@@ -14,11 +14,10 @@ public class BultoOVVO {
 
 	}
 
-	public BultoOVVO(int id, Date fecha, OficinaVentaVO oficina, FacturaVO factura, ClienteVO cliente, RemitoClienteVO remito){
+	public BultoOVVO(int id, Date fecha, OficinaVentaVO oficina, ClienteVO cliente, RemitoClienteVO remito){
 		this.id = id;
 		this.fecha = fecha;
 		this.oficina = oficina;
-		this.factura = factura;
 		this.cliente = cliente;
 		this.remito = remito;
 	}

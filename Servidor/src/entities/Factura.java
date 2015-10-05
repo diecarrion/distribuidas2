@@ -1,6 +1,10 @@
 package entities;
 
-import java.util.Date;
+import java.util.*;
+
+import dto.FacturaVO;
+import dto.ItemFacturaVO;
+import dto.ProveedorVO;
 
 public class Factura {
 
@@ -9,19 +13,20 @@ public class Factura {
 	private float montoTotal;
 	private OficinaVenta oficina;
 	private Cliente cliente;
+	private List<ItemFactura> items;
 	
 	public Factura()
 	{
 		
 	}
 
-	public Factura(int id, Date fecha, float montoTotal, OficinaVenta oficina, Cliente cliente)
+	public Factura(Date fecha, float montoTotal, OficinaVenta oficina, Cliente cliente, List<ItemFactura> items)
 	{
-		this.id = id;
 		this.fecha = fecha;
 		this.montoTotal = montoTotal;
 		this.oficina= oficina;
 		this.cliente = cliente;
+		this.items = items;
 	}
 	
 	public int getId() {
@@ -58,8 +63,31 @@ public class Factura {
 	public OficinaVenta getOficinaVenta() {
 		return oficina;
 	}
-
+	
 	public void setOficinaVenta(OficinaVenta oficina) {
 		this.oficina = oficina;
+	}
+	
+	
+	public List<ItemFactura> getItemsFactura() {
+		return items;
+	}
+
+	public void setItemsFactura(List<ItemFactura> items) {
+		this.items = items;
+	}
+	
+
+	public List<ItemFacturaVO> getItemsFacturaVO() {
+		List<ItemFacturaVO> itemsVO = new ArrayList<ItemFacturaVO>();
+		for(ItemFactura item : items)
+		{
+			itemsVO.add(item.toVO());
+		}
+		return itemsVO;
+	}
+	
+	public FacturaVO toVO(){
+		return new FacturaVO(this.getId(),this.getFecha(),this.getMontoTotal(), this.getOficinaVenta().toVO(), this.getCliente().toVO(), this.getItemsFacturaVO());
 	}
 }

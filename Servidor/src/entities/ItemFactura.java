@@ -2,11 +2,13 @@ package entities;
 
 import java.util.Date;
 
+import dto.FacturaVO;
+import dto.ItemFacturaVO;
+
 public class ItemFactura {
 	private int id;
 	private int cantidad;
 	private float precioUnitario;
-	private Factura factura;
 	private Rodamiento rodamiento;
 	
 	public ItemFactura()
@@ -14,12 +16,10 @@ public class ItemFactura {
 		
 	}
 
-	public ItemFactura(int id, int cantidad, float precioUnitario, Factura factura, Rodamiento rodamiento)
+	public ItemFactura(int cantidad, float precioUnitario, Rodamiento rodamiento)
 	{
-		this.id = id;
 		this.cantidad = cantidad;
 		this.precioUnitario = precioUnitario;
-		this.factura = factura;
 		this.rodamiento = rodamiento;
 	}
 	
@@ -46,14 +46,7 @@ public class ItemFactura {
 	public void setPrecioUnitario(float precioUnitario){
 		this.precioUnitario = precioUnitario;
 	}
-	
-	public Factura getFactura() {
-		return factura;
-	}
 
-	public void setFactura(Factura factura) {
-		this.factura = factura;
-	}
 	
 	public Rodamiento getRodamiento() {
 		return rodamiento;
@@ -61,6 +54,10 @@ public class ItemFactura {
 
 	public void setRodamiento(Rodamiento rodamiento) {
 		this.rodamiento = rodamiento;
+	}
+	
+	public ItemFacturaVO toVO(){
+		return new ItemFacturaVO(this.getCantidad(),this.getPrecioUnitario(), this.getRodamiento().toVO());
 	}
 
 }

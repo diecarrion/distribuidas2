@@ -12,8 +12,7 @@ public class RodamientoVO {
 
 	}
 	
-	public RodamientoVO(int id, String codigoSKF, String caracteristicas, String marca, String origen){
-		this.id = id;
+	public RodamientoVO(String codigoSKF, String caracteristicas, String marca, String origen){
 		this.codigoSKF = codigoSKF;
 		this.caracteristicas = caracteristicas;
 		this.marca = marca;

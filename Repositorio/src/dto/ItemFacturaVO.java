@@ -14,12 +14,10 @@ public class ItemFacturaVO {
 		
 	}
 
-	public ItemFacturaVO(int id, int cantidad, float precioUnitario, FacturaVO factura, RodamientoVO rodamiento)
+	public ItemFacturaVO(int cantidad, float precioUnitario,RodamientoVO rodamiento)
 	{
-		this.id = id;
 		this.cantidad = cantidad;
 		this.precioUnitario = precioUnitario;
-		this.factura = factura;
 		this.rodamiento = rodamiento;
 	}
 	
