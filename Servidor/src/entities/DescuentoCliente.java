@@ -1,5 +1,6 @@
 package entities;
 import java.util.Date;
+import java.util.List;
 
 public class DescuentoCliente {
 	private int id;
@@ -7,6 +8,7 @@ public class DescuentoCliente {
 	private float montoDescuento;
 	private float porcentaje;
 	private Date vigenteHasta;
+	private List<Cliente> clientes;
 	
 	
 	public DescuentoCliente() {
@@ -59,6 +61,14 @@ public class DescuentoCliente {
 
 	public void setVigenteHasta(Date vigenteHasta) {
 		this.vigenteHasta = vigenteHasta;
+	}
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
 	}
 
 

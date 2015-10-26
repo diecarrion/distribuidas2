@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import dto.ProveedorVO;;
 
 public class Proveedor {
@@ -9,6 +11,8 @@ public class Proveedor {
 	private String cuit;
 	private String direccion;
 	private String provincia;
+	private List <ListaPrecio> listaPrecios;
+	
 	
 	public Proveedor() {
 
@@ -71,7 +75,17 @@ public class Proveedor {
 		this.provincia = provincia;
 	}
 	
+	
+	public List<ListaPrecio> getListaPrecios() {
+		return listaPrecios;
+	}
+
+	public void setListaPrecios(List<ListaPrecio> listaPrecios) {
+		this.listaPrecios = listaPrecios;
+	}
+
 	public ProveedorVO toVO(){
 		return new ProveedorVO(this.getId(), this.getIdentificacion(),this.getCuit(),this.getTelefono(), this.getDireccion(), this.getProvincia());
-}
+	}
+	
 }

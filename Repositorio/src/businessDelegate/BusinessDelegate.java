@@ -66,58 +66,13 @@ private ISistemaRemote sistemaRemote;
 	
 	//Casa Central
 	
-	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion, String provincia) throws RemoteException
-	{
-		sistemaRemote.altaProveedor(identificacion, telefono, cuit, direccion, provincia);
-	}
-	
-	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion, String provincia) throws RemoteException
-	{
-		sistemaRemote.modificarProveedor(idProveedor, identificacion, telefono, direccion, provincia);
-	}
-	
-	public void bajaProveedor(int idProveedor) throws RemoteException
-	{
-		sistemaRemote.bajaProveedor(idProveedor);
-	}
-	
-	public ComparativaPrecioVO procesarListaPreciosProgramada() throws RemoteException
-	{
-		return null;
-	}
-	
-	public ComparativaPrecioVO publicarPreciosComparados(List<ListaPrecioVO> listaPrecios) throws RemoteException
-	{
-		return new ComparativaPrecioVO();
-	}
-	
-	public List<OrdenCompraProveedorVO> comprarRodamientos(List<OrdenCompraClienteVO> ordenesCompraCliente) throws RemoteException
-	{
-		return null;
-	}
-	
-	public List<BultoCCVO> generarEntrega(List<RodamientoVO> listaRodamientos, List<RemitoProveedorVO> remitosProveedor) throws RemoteException
-	{
-		return null;
-	}
-	
-	public void altaStock(int idRodamiento, int cantidadInicial, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
-	{
-	}
-	
-	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
-	{
-	}
-	
+
 	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException
 	{
 		return new RemitoTransporteVO();
 	}
 	
-	public ProveedorVO buscarProveedor (int idProveedor) throws RemoteException
-	{
-		return sistemaRemote.buscarProveedor(idProveedor);
-	}
+
 
 
 }

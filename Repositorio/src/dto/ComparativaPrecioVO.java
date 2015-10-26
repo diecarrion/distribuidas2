@@ -1,33 +1,32 @@
 package dto;
 
 public class ComparativaPrecioVO {
-	private int id;
-	private float mejorPrecio;
+	private ListaPrecioVO listaPrecioVO;
+	private RodamientoVO rodamiento;
 	
 	public ComparativaPrecioVO()
 	{}
 
-	public ComparativaPrecioVO(int id, float mejorPrecio)
+	public ComparativaPrecioVO(ListaPrecioVO lista, RodamientoVO rodamiento)
 	{
-		this.id = id;
-		this.mejorPrecio = mejorPrecio;
-	}
-	
-	public int getId() {
-		return id;
+		this.listaPrecioVO = lista;
+		this.rodamiento = rodamiento;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public ListaPrecioVO getListaPrecioVO() {
+		return listaPrecioVO;
 	}
 
-		
-	public float getMejorPrecio(){
-		return mejorPrecio;
-	}
-	
-	public void setMejorPrecio(float mejorPrecio){
-		this.mejorPrecio = mejorPrecio;
+	public void setListaPrecioVO(ListaPrecioVO listaPrecioVO) {
+		this.listaPrecioVO = listaPrecioVO;
 	}
 
+	public RodamientoVO getRodamiento() {
+		return rodamiento;
+	}
+
+	public void setRodamiento(RodamientoVO rodamiento) {
+		this.rodamiento = rodamiento;
+	}
 }
+	

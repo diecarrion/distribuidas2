@@ -7,9 +7,10 @@ import dto.ListaPrecioVO;
 public class ListaPrecio {
 	private int id;
 	private Date fecha;
-	private float precio;
 	private Proveedor proveedor;
-	private List<Rodamiento> rodamientos;
+	private boolean activa;
+	private List<ListaPrecioDetalle> detalles;
+	private List<DescuentoCantidad> descuentosCantidad;
 	
 	public ListaPrecio() {
 
@@ -18,9 +19,9 @@ public class ListaPrecio {
 	public ListaPrecio(int id, Date fecha, float precio, Proveedor proveedor) {
 		this.id = id;
 		this.fecha = fecha;
-		this.precio = precio;
 		this.proveedor = proveedor;
-		this.rodamientos = new ArrayList<Rodamiento>();
+		this.activa = true;
+		this.detalles = new ArrayList<ListaPrecioDetalle>();
 	}
 	
 	public int getId() {
@@ -39,14 +40,6 @@ public class ListaPrecio {
 		this.fecha = fecha;
 	}
 	
-	public float getPrecio(){
-		return precio;
-	}
-	
-	public void setPrecio(float precio){
-		this.precio = precio;
-	}
-	
 	public Proveedor getProveedor() {
 		return proveedor;
 	}
@@ -56,7 +49,32 @@ public class ListaPrecio {
 	}
 	
 	public ListaPrecioVO toVO(){
-		return new ListaPrecioVO(this.getId(),this.getFecha(), this.getPrecio(), this.getProveedor().toVO());
+		return new ListaPrecioVO(this.getId(),this.getFecha(), this.getProveedor().toVO());
+	}
+
+
+	public List<DescuentoCantidad> getDescuentosCantidad() {
+		return descuentosCantidad;
+	}
+
+	public void setDescuentosCantidad(List<DescuentoCantidad> descuentosCantidad) {
+		this.descuentosCantidad = descuentosCantidad;
+	}
+
+	public boolean isActiva() {
+		return activa;
+	}
+
+	public void setActiva(boolean activa) {
+		this.activa = activa;
+	}
+
+	public List<ListaPrecioDetalle> getDetalles() {
+		return detalles;
+	}
+
+	public void setDetalles(List<ListaPrecioDetalle> detalles) {
+		this.detalles = detalles;
 	}
 
 }

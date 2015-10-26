@@ -1,12 +1,14 @@
 package entities;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrdenCompraProveedor {
 	private int numero;
 	private Date fecha;
 	private Proveedor proveedor;
 	private BultoCC bulto;
+	private List<ItemOrdenCompraProveedor> itemsOrdenCompraProveedor;
 	
 	public OrdenCompraProveedor() {
 
@@ -50,4 +52,14 @@ public class OrdenCompraProveedor {
 	public void setBulto(BultoCC bulto) {
 		this.bulto = bulto;
 	}
+
+	public List<ItemOrdenCompraProveedor> getItemsOrdenCompraProveedor() {
+		return itemsOrdenCompraProveedor;
+	}
+
+	public void setItemsOrdenCompraProveedor(
+			List<ItemOrdenCompraProveedor> itemsOrdenCompraProveedor) {
+		this.itemsOrdenCompraProveedor = itemsOrdenCompraProveedor;
+	}
+	
 }

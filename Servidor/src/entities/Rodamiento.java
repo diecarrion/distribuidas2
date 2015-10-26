@@ -11,7 +11,7 @@ public class Rodamiento {
 	private String caracteristicas;
 	private String marca;
 	private String origen;
-	private List<ListaPrecio> listaPrecios;
+	private List<ListaPrecioDetalle> listaDetalle;
 	
 	public Rodamiento() {
 
@@ -22,7 +22,7 @@ public class Rodamiento {
 		this.caracteristicas = caracteristicas;
 		this.marca = marca;
 		this.origen = origen;
-		this.listaPrecios = new ArrayList<ListaPrecio>();
+		this.listaDetalle = new ArrayList<ListaPrecioDetalle>();
 	}
 	
 	public int getId() {
@@ -67,6 +67,15 @@ public class Rodamiento {
 	
 	public RodamientoVO toVO(){
 		return new RodamientoVO(this.getCodigoSKF(),this.getCaracteristicas(), this.getMarca(), this.getOrigen());
-}
+	}
+
+	public List<ListaPrecioDetalle> getListaPrecios() {
+		return listaDetalle;
+	}
+
+	public void setListaPrecios(List<ListaPrecioDetalle> listaDetalle) {
+		this.listaDetalle = listaDetalle;
+	}
+	
 	
 }

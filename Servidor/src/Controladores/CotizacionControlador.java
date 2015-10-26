@@ -28,10 +28,10 @@ public class CotizacionControlador {
 			CotizacionVO cot = new CotizacionVO(validez, c.toVO().getOficinaVenta());
 			for (RodamientoCotizadoVO p : listaRodamientos) {
 				Rodamiento r =  new Rodamiento(p.getRodamiento().getCodigoSKF(), p.getRodamiento().getCaracteristicas(), p.getRodamiento().getMarca(), p.getRodamiento().getOrigen());
-				ListaPrecio mejorLista = ComparativaPrecioSRV.mejorPrecio(r);
+				ListaPrecioDetalle mejorLista = ComparativaPrecioSRV.mejorPrecio(r);
 				if(mejorLista!=null)
 				{
-					RodamientoCotizadoVO rc = new RodamientoCotizadoVO(r.toVO(),mejorLista.getPrecio(),mejorLista.getProveedor().toVO(), p.getCantidad());
+					RodamientoCotizadoVO rc = new RodamientoCotizadoVO(r.toVO(),mejorLista.getPrecio(),mejorLista.getListaPrecio().getProveedor().toVO(), p.getCantidad());
 					total += mejorLista.getPrecio();
 					rodCotizados.add(rc);
 				}

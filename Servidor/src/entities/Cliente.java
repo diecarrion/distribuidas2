@@ -13,6 +13,7 @@ public class Cliente {
 	private String provincia;
 	private OficinaVenta oficina;
 	private List<DescuentoCliente> descuentos;
+	private List<Pedido> pedidos;
 	
 	public Cliente() {
 
@@ -92,9 +93,28 @@ public class Cliente {
 	public void setDescuentos(List<DescuentoCliente> descuentos) {
 		this.descuentos = descuentos;
 	}
-	
+		
+	public OficinaVenta getOficina() {
+		return oficina;
+	}
+
+	public void setOficina(OficinaVenta oficina) {
+		this.oficina = oficina;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	public ClienteVO toVO(){
 			return new ClienteVO(this.getId(), this.getIdentificacion(),this.getCuit(),this.getTelefono(), this.getDireccion(), this.getProvincia(),this.getOficinaVenta().toVO());
 	}
-	
+
+	public boolean tieneDescuento() {
+		return false;
+	}
 }

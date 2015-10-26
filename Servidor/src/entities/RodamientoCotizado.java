@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 public class RodamientoCotizado {
 	private int id;
-	private Rodamiento rodamiento;
 	private float precioUnit;
 	private int cantidad;
+	private Rodamiento rodamiento;
 	private Proveedor proveedor;
+	
+	
 	public RodamientoCotizado() {
-
 	}
 	
 	public RodamientoCotizado(Rodamiento rodamiento, float precioUnit, Proveedor proveedor, int cantidad){

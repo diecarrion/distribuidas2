@@ -27,27 +27,9 @@ public interface ISistemaRemote extends Remote {
 	
 	//Casa Central
 	
-	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion, String provincia) throws RemoteException;
-	
-	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion, String provincia) throws RemoteException;
-	
-	public void bajaProveedor(int idProveedor) throws RemoteException;
-	
-	public ComparativaPrecioVO procesarListaPreciosProgramada() throws RemoteException;
-	
-	public ComparativaPrecioVO publicarPreciosComparados(List<ListaPrecioVO> listaPrecios) throws RemoteException;
-	
-	public List<OrdenCompraProveedorVO> comprarRodamientos(List<OrdenCompraClienteVO> ordenesCompraCliente) throws RemoteException;
-	
-	public List<BultoCCVO> generarEntrega(List<RodamientoVO> listaRodamientos, List<RemitoProveedorVO> remitosProveedor) throws RemoteException;
-	
-	public void altaStock(int idRodamiento, int cantidadInicial, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException;
-	
-	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException;
-	
+	public List<ComparativaPrecioVO> publicarPreciosComparados(List<ListaPrecioVO> listaPrecios) throws RemoteException;
+		
 	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException;
-	
-	public ProveedorVO buscarProveedor (int idProveedor) throws RemoteException;
 	
 
 }

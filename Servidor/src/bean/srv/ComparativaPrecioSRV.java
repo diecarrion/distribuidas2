@@ -6,8 +6,8 @@ public class ComparativaPrecioSRV {
 
 	
 	
-	public static ListaPrecio mejorPrecio(Rodamiento rodamiento){
+	public static ListaPrecioDetalle mejorPrecio(Rodamiento rodamiento){
 		// A IMPLEMENTAR
-		return new ListaPrecio();
+		return new ListaPrecioDetalle();
 	}
 }
