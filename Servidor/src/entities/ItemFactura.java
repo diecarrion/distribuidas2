@@ -1,16 +1,33 @@
 package entities;
 
-import java.util.Date;
 
-import dto.FacturaVO;
-import dto.ItemFacturaVO;
+import javax.persistence.*;
 
+import dto.*;
+
+@Entity
+@Table(name="ItemsFactura")
 public class ItemFactura {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private int cantidad;
 	private float precioUnitario;
+	@ManyToOne
+	@JoinColumn(name="id_Rodamiento", referencedColumnName="id")
 	private Rodamiento rodamiento;
+	@ManyToOne
+	@JoinColumn(name="id_Factura", referencedColumnName="id")
+	private Factura factura;
 	
+	public Factura getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+
 	public ItemFactura()
 	{
 		

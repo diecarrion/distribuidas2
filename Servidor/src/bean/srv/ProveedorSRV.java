@@ -1,28 +1,29 @@
 package bean.srv;
 
 import entities.*;
+import bean.dao.*;
+
 
 public class ProveedorSRV {
 
-	/*	private static ProveedorDAO dao;
+	private static ProveedorDAO dao;
 	static {
 		dao = ProveedorDAO.getInstancia();
-	}*/
+	}
 	
 	public static void altaProveedor(Proveedor proveedor){
-		// A IMPLEMENTAR
+		dao.grabarProveedor(proveedor);
 	}
 	
 	public static Proveedor buscarProveedor(int idProveedor){
-		// A IMPLEMENTAR
-		return new Proveedor();
+		return dao.getProveedor(idProveedor);
 	}
 	
 	public static void modificarProveedor(Proveedor proveedor){
-		// A IMPLEMENTAR
+		dao.modificarProveedor(proveedor);
 	}
 	
-	public static void bajaProveedor(Proveedor proveedor){
-		// A IMPLEMENTAR
+	public static void bajaProveedor(int idProveedor){
+		dao.eliminarProveedor(idProveedor);
 	}
 }

@@ -1,0 +1,8 @@
+package Controladores;
+
+public class Inicio {
+	public static void main(String[] arg){
+		ClienteControlador sistema = new ClienteControlador();
+		sistema.altaCliente("Diego Carrion", "34334352", "20-35375460-3", "Calle Falsa 123", "BS AS", 2);
+	}
+}

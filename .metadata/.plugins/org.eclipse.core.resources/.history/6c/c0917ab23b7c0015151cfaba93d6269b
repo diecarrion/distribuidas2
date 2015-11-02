@@ -1,0 +1,28 @@
+package hbt;
+
+public class HibernateUtil {
+
+	 private static final SessionFactory sessionFactory;
+	    static
+	    {
+	        try
+	        {
+	        	 AnnotationConfiguration config = new AnnotationConfiguration();             
+	        	 config.addAnnotatedClass(Cliente.class);
+	        	 config.addAnnotatedClass(ItemReparacion.class);
+	        	 config.addAnnotatedClass(ManoDeObra.class);
+	             config.addAnnotatedClass(Material.class);
+	             config.addAnnotatedClass(Persona.class);
+	             config.addAnnotatedClass(Reparacion.class);
+	             config.addAnnotatedClass(Repuesto.class);
+	             config.addAnnotatedClass(Tecnico.class);
+	             config.addAnnotatedClass(Vehiculo.class);
+	             
+	             sessionFactory = config.buildSessionFactory();
+	        }
+	        catch (Throwable ex)
+	        {
+	            System.err.println("Initial SessionFactory creation failed." + ex);
+	            throw new ExceptionInInitializerError(ex);
+	        }
+}

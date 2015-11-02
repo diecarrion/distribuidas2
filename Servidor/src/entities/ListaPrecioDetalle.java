@@ -1,8 +1,19 @@
 package entities;
 
+import javax.persistence.Entity;
+import javax.persistence.*;
+
+@Entity
+@Table(name="ListaPrecioDetalles")
 public class ListaPrecioDetalle {
 	
+	@EmbeddedId 
+	private ListaPrecioDetalleId idListaPrecioDetalle;
+	@ManyToOne
+	@JoinColumn(name="id",insertable=false, updatable=false)
 	private Rodamiento rodamiento;
+	@ManyToOne
+	@JoinColumn(name="id",insertable=false, updatable=false)
 	private ListaPrecio listaPrecio;
 	private float precio;
 	
@@ -14,6 +25,12 @@ public class ListaPrecioDetalle {
 		this.rodamiento = rodamiento;
 		this.listaPrecio = listaPrecio;
 		this.precio = precio;
+	}
+	public ListaPrecioDetalleId getIdListaPrecioDetalle() {
+		return idListaPrecioDetalle;
+	}
+	public void setIdListaPrecioDetalle(ListaPrecioDetalleId idListaPrecioDetalle) {
+		this.idListaPrecioDetalle = idListaPrecioDetalle;
 	}
 	public Rodamiento getRodamiento() {
 		return rodamiento;

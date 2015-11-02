@@ -1,0 +1,18 @@
+package bean.srv;
+import bean.dao.ClienteDAO;
+import entities.*;
+
+public class OficinaVentaSRV {
+	
+	private static OficinaDAO dao;
+	static {
+		dao = OficinaDAO.getInstancia();
+	}
+	
+	public static OficinaVenta getOficinaVenta(int idOficinaVenta)
+	{
+		return new OficinaVenta();
+		
+	}
+
+}

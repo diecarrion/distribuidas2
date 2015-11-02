@@ -1,0 +1,48 @@
+package entities;
+
+import java.util.*;
+
+import dto.*;
+
+public class RemitoCliente {
+	private int id;
+	private Date fecha;
+	private Cliente cliente;
+	
+	public RemitoCliente() {
+
+	}
+
+	public RemitoCliente(Date fecha, Cliente cliente){
+			this.fecha = fecha;
+		this.cliente = cliente;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	public RemitoClienteVO toVO(){
+		return new RemitoClienteVO(this.getId(),this.getFecha(),this.getCliente().toVO());
+	}
+}

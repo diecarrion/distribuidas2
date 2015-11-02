@@ -1,27 +1,27 @@
 package bean.srv;
 
 import entities.*;
+import bean.dao.*;
 
 public class ClienteSRV {
-/*	private static ClienteDAO dao;
+	private static ClienteDAO dao;
 	static {
 		dao = ClienteDAO.getInstancia();
-	}*/
+	}
 	public static void altaCliente(Cliente cliente){
-		// A IMPLEMENTAR
+		dao.grabarCliente(cliente);
 	}
 	
 	public static Cliente buscarCliente(int idCliente){
-		// A IMPLEMENTAR
-		return new Cliente();
+		return dao.getCliente(idCliente);
 	}
 	
 	public static void modificarCliente(Cliente cliente){
-		// A IMPLEMENTAR
+		dao.modificarCliente(cliente);
 	}
 	
-	public static void bajaCliente(Cliente cliente){
-		// A IMPLEMENTAR
+	public static void bajaCliente(int idCliente){
+		dao.eliminarCliente(idCliente);
 	}
 	
 	public static float aplicarDescuentoCliente(Cliente c, float precio){

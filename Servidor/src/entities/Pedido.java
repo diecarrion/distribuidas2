@@ -1,16 +1,26 @@
 package entities;
 
-import java.util.Date;
+import java.util.*;
 
-import dto.FacturaVO;
-import dto.PedidoVO;
+import javax.persistence.*;
 
+import dto.*;
+
+@Entity
+@Table(name="Pedidos")
 public class Pedido {
-	
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
 	private OficinaVenta oficina;
+	@ManyToOne
+	@JoinColumn(name="id_Cliente", referencedColumnName="id")
 	private Cliente cliente;
+	@OneToOne
+	@JoinColumn(name="id_Cotizacion", referencedColumnName="id")
 	private Cotizacion cotizacion;
 	
 	public Pedido() {

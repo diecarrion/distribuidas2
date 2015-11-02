@@ -1,0 +1,40 @@
+package entities;
+
+import javax.persistence.CascadeType;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+public class ComparativaPrecio {
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Rodamiento rodamiento;
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private ListaPrecio listaPrecio;
+	
+	public ComparativaPrecio()
+	{}
+
+	public ComparativaPrecio(Rodamiento rodamiento, ListaPrecio listaPrecio)
+	{
+		this.rodamiento = rodamiento;
+		this.listaPrecio = listaPrecio;
+	}
+
+	public Rodamiento getRodamiento() {
+		return rodamiento;
+	}
+
+	public void setRodamiento(Rodamiento rodamiento) {
+		this.rodamiento = rodamiento;
+	}
+
+	public ListaPrecio getListaPrecio() {
+		return listaPrecio;
+	}
+
+	public void setListaPrecio(ListaPrecio listaPrecio) {
+		this.listaPrecio = listaPrecio;
+	}
+	
+}

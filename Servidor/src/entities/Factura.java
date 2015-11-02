@@ -2,18 +2,27 @@ package entities;
 
 import java.util.*;
 
-import dto.FacturaVO;
-import dto.ItemFacturaVO;
-import dto.ProveedorVO;
+import javax.persistence.*;
 
+import dto.*;
+
+@Entity
+@Table(name="Facturas")
 public class Factura {
-
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private Date fecha;
 	private float montoTotal;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
 	private OficinaVenta oficina;
+	@ManyToOne
+	@JoinColumn(name="id_Cliente", referencedColumnName="id")
 	private Cliente cliente;
-	private List<ItemFactura> items;
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="id")
+	private List<ItemFactura> items = new ArrayList<ItemFactura>();
 	
 	public Factura()
 	{

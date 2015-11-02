@@ -1,0 +1,11 @@
+package entities;
+
+import javax.persistence.*;
+
+@Embeddable
+public class ListaPrecioDetalleId {
+
+	private int id_rodamiento;
+	private int id_listaPrecio;
+
+}

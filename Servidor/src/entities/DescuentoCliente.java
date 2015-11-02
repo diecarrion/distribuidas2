@@ -1,14 +1,20 @@
 package entities;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="DescuentosCliente")
 public class DescuentoCliente {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private String condEsp;
 	private float montoDescuento;
 	private float porcentaje;
 	private Date vigenteHasta;
-	private List<Cliente> clientes;
+	@ManyToMany(mappedBy="descuentos")
+	private Set<Cliente> clientes = new HashSet<Cliente>();
 	
 	
 	public DescuentoCliente() {
@@ -63,11 +69,11 @@ public class DescuentoCliente {
 		this.vigenteHasta = vigenteHasta;
 	}
 
-	public List<Cliente> getClientes() {
+	public Set<Cliente> getClientes() {
 		return clientes;
 	}
 
-	public void setClientes(List<Cliente> clientes) {
+	public void setClientes(Set<Cliente> clientes) {
 		this.clientes = clientes;
 	}
 

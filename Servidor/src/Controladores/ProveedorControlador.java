@@ -40,11 +40,7 @@ public class ProveedorControlador {
 
 	public void bajaProveedor(int idProveedor) throws RemoteException
 	{
-		Proveedor p = ProveedorSRV.buscarProveedor(idProveedor);
-		if(p != null)
-		{
-			ProveedorSRV.bajaProveedor(p);
-		}
+		ProveedorSRV.bajaProveedor(idProveedor);
 	}
 	
 	public ProveedorVO buscarProveedor(int idProveedor) throws RemoteException

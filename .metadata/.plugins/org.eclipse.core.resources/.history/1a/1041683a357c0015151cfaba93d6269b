@@ -1,0 +1,14 @@
+package entities;
+import javax.persistence.*;
+
+@Embeddable
+public class ComparativaPrecioId {
+
+		
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Rodamiento rodamiento;
+	@ManyToOne
+	@JoinColumn(name="id")
+	private ListaPrecio listaPrecio;
+}

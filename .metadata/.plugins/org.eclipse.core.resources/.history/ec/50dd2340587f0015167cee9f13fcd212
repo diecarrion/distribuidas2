@@ -1,0 +1,36 @@
+package entities;
+
+import javax.persistence.*;
+
+@Embeddable
+public class EstadoOrdenCompraClienteId {
+
+	@OneToOne
+	@JoinColumn(name="numero")
+	private OrdenCompraCliente ordenCliente;
+	@OneToOne
+	@JoinColumn(name="numero")
+	private OrdenCompraProveedor ordenProveedor;
+	
+	public EstadoOrdenCompraClienteId()
+	{
+		
+	}
+
+	public OrdenCompraCliente getOrdenCliente() {
+		return ordenCliente;
+	}
+
+	public void setOrdenCliente(OrdenCompraCliente ordenCliente) {
+		this.ordenCliente = ordenCliente;
+	}
+
+	public OrdenCompraProveedor getOrdenProveedor() {
+		return ordenProveedor;
+	}
+
+	public void setOrdenProveedor(OrdenCompraProveedor ordenProveedor) {
+		this.ordenProveedor = ordenProveedor;
+	}
+	
+}

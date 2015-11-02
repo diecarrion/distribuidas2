@@ -1,0 +1,18 @@
+package Controladores;
+
+
+import java.rmi.RemoteException;
+import entities.*;
+public class Inicio {
+	public static void main(String[] arg){
+		ClienteControlador sistema = new ClienteControlador();
+		try {
+			sistema.altaCliente("Diego Carrion", "34334352", "20-35375460-3", "Calle Falsa 123", "Mendoza", 1);
+			Cliente cliente = sistema.buscarCliente(1);
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

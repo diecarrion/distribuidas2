@@ -1,0 +1,39 @@
+package entities;
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Embeddable
+public class ComparativaPrecioId implements Serializable {
+
+	@ManyToOne
+	@JoinColumn(name="id",insertable=false, updatable=false)
+	private Rodamiento rodamiento;
+	@ManyToOne
+	@JoinColumn(name="id",insertable=false, updatable=false)
+	private ListaPrecio listaPrecio;
+	
+	
+	public ComparativaPrecioId(Rodamiento rodamiento, ListaPrecio listaPrecio) {
+		super();
+		this.rodamiento = rodamiento;
+		this.listaPrecio = listaPrecio;
+	}
+
+
+	public Rodamiento getRodamiento() {
+		return rodamiento;
+	}
+
+	public void setRodamiento(Rodamiento rodamiento) {
+		this.rodamiento = rodamiento;
+	}
+
+	public ListaPrecio getListaPrecio() {
+		return listaPrecio;
+	}
+
+	public void setListaPrecio(ListaPrecio listaPrecio) {
+		this.listaPrecio = listaPrecio;
+	}
+}

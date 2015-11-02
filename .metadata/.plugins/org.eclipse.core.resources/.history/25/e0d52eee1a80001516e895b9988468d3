@@ -1,0 +1,26 @@
+package bean.dao;
+
+import java.util.*;
+import java.io.Serializable;
+
+import org.hibernate.FetchMode;
+import org.hibernate.Query;
+
+import hbt.HibernateUtil;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+public class ClienteDAO {
+
+	private static ClienteDAO instancia = null;
+	private static SessionFactory sf = null;
+
+	public static ClienteDAO getInstancia(){
+		if(instancia == null){
+			sf = HibernateUtil.getSessionFactory();
+			instancia = new ClienteDAO();
+		} 
+		return instancia;
+	}
+}

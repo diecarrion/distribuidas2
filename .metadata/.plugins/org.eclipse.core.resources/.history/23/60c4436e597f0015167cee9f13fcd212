@@ -1,0 +1,20 @@
+package entities;
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Embeddable
+public class ComparativaPrecioId implements Serializable {
+
+	private int id_rodamiento;
+	private int id_listaPrecio;
+	
+	public ComparativaPrecioId()
+	{
+		
+	}
+	
+	
+
+
+}

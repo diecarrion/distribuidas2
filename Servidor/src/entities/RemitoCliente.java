@@ -1,13 +1,20 @@
 package entities;
 
-import java.util.Date;
+import java.util.*;
 
-import dto.FacturaVO;
-import dto.RemitoClienteVO;
+import javax.persistence.*;
 
+import dto.*;
+
+@Entity
+@Table(name="RemitoClientes")
 public class RemitoCliente {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Cliente", referencedColumnName="id")
 	private Cliente cliente;
 	
 	public RemitoCliente() {

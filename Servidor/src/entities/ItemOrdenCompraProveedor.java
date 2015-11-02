@@ -1,10 +1,18 @@
 package entities;
+import javax.persistence.*;
 
+@Entity
+@Table(name="ItemsOrdenCompraProveedor")
 public class ItemOrdenCompraProveedor {
-
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private int cantidad;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_Rodamiento", referencedColumnName="id")
 	private Rodamiento rodamiento;
+	@ManyToOne
+	@JoinColumn(name="id_ordenCompraProveedor", referencedColumnName="numero" ,insertable=false, updatable=false)
 	private OrdenCompraProveedor ordenProveedor;
 	
 	public ItemOrdenCompraProveedor() {

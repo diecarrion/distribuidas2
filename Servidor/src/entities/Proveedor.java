@@ -1,17 +1,25 @@
 package entities;
 
-import java.util.List;
+import java.util.*;
+
+import javax.persistence.*;
 
 import dto.ProveedorVO;;
 
+@Entity
+@Table(name="Proveedores")
 public class Proveedor {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private String identificacion;
 	private String telefono;
 	private String cuit;
 	private String direccion;
 	private String provincia;
-	private List <ListaPrecio> listaPrecios;
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="id")
+	private List <ListaPrecio> listaPrecios = new ArrayList<ListaPrecio>();
 	
 	
 	public Proveedor() {

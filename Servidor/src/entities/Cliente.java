@@ -1,19 +1,32 @@
 package entities;
 
 import dto.ClienteVO;
+
+import javax.persistence.*;
+
 import java.util.*;
 
+
+@Entity
+@Table(name="Clientes")
 public class Cliente {
 
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private String identificacion;
 	private String telefono;
 	private String cuit;
 	private String direccion;
 	private String provincia;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
 	private OficinaVenta oficina;
-	private List<DescuentoCliente> descuentos;
-	private List<Pedido> pedidos;
+	@ManyToMany (cascade=CascadeType.ALL)
+	private Set<DescuentoCliente> descuentos =  new HashSet<DescuentoCliente>();
+	@OneToMany 
+	@JoinColumn(name="id")
+	private List<Pedido> pedidos =  new ArrayList<Pedido>();
 	
 	public Cliente() {
 
@@ -27,7 +40,6 @@ public class Cliente {
 		this.provincia = provincia;
 		this.direccion = direccion;
 		this.oficina = oficina;
-		this.descuentos = new ArrayList<DescuentoCliente>();
 	}
 
 	public int getId() {
@@ -86,11 +98,11 @@ public class Cliente {
 		this.oficina = oficina;
 	}
 	
-	public List<DescuentoCliente> getDescuentos() {
+	public Set<DescuentoCliente> getDescuentos() {
 		return descuentos;
 	}
 
-	public void setDescuentos(List<DescuentoCliente> descuentos) {
+	public void setDescuentos(HashSet<DescuentoCliente> descuentos) {
 		this.descuentos = descuentos;
 	}
 		

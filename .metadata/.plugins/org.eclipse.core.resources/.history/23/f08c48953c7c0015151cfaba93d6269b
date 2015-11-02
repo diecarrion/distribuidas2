@@ -1,0 +1,11 @@
+package Controladores;
+
+public class Inicio {
+	public static void main(String[] arg){
+		Controlador sistema = new Controlador();
+		//sistema.query1();
+		//sistema.query2();
+		//sistema.query3();
+		sistema.query4();
+	}
+}

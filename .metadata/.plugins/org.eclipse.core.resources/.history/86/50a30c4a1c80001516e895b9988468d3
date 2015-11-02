@@ -1,0 +1,36 @@
+package bean.srv;
+
+import entities.*;
+
+public class ClienteSRV {
+/*	private static ClienteDAO dao;
+	static {
+		dao = ClienteDAO.getInstancia();
+	}*/
+	public static void altaCliente(Cliente cliente){
+		// A IMPLEMENTAR
+	}
+	
+	public static Cliente buscarCliente(int idCliente){
+		// A IMPLEMENTAR
+		return new Cliente();
+	}
+	
+	public static void modificarCliente(Cliente cliente){
+		// A IMPLEMENTAR
+	}
+	
+	public static void bajaCliente(Cliente cliente){
+		// A IMPLEMENTAR
+	}
+	
+	public static float aplicarDescuentoCliente(Cliente c, float precio){
+		float precioDesc = precio;
+		for(DescuentoCliente dc: c.getDescuentos())
+		{
+			//A Implementar
+			
+		}
+		return precioDesc;
+	}
+}

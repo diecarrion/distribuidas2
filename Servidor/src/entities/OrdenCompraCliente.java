@@ -1,17 +1,32 @@
 package entities;
 
-import java.util.Date;
+import java.util.*;
 
-import dto.OrdenCompraClienteVO;
-import dto.ProveedorVO;
+import javax.persistence.*;
 
+import dto.*;
+
+
+@Entity
+@Table(name="OrdenCompraClientes")
 public class OrdenCompraCliente {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int numero;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
 	private OficinaVenta oficina;
+	@ManyToOne
+	@JoinColumn(name="id_Cliente", referencedColumnName="id")
 	private Cliente cliente;
+	@OneToOne
+	@JoinColumn(name="id_Remito", referencedColumnName ="id")
 	private RemitoCliente remito;
+	@OneToOne
+	@JoinColumn(name="id_Pedido", referencedColumnName ="id")
 	private Pedido pedido;
+	
 	
 	public OrdenCompraCliente() {
 
@@ -76,5 +91,22 @@ public class OrdenCompraCliente {
 	public OrdenCompraClienteVO toVO(){
 		return new OrdenCompraClienteVO(this.getNumero(),this.getFecha(),this.getOficinaVenta().toVO(),this.getCliente().toVO(), this.getRemitoCliente().toVO(), this.getPedido().toVO());
 }
+
+	public OficinaVenta getOficina() {
+		return oficina;
+	}
+
+	public void setOficina(OficinaVenta oficina) {
+		this.oficina = oficina;
+	}
+
+	public RemitoCliente getRemito() {
+		return remito;
+	}
+
+	public void setRemito(RemitoCliente remito) {
+		this.remito = remito;
+	}
+
 
 }

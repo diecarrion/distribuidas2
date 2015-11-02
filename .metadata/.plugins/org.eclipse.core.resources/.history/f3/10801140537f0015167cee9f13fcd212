@@ -1,0 +1,7 @@
+package entities;
+
+public class EstadoOrdenCompraClienteId {
+
+	private int id_ordenCompraCliente;
+	private int id_ordenCompraProveedor;
+}

@@ -38,4 +38,6 @@
 <fullyQualifiedTypeName name="Controladores.CotizacionControlador"/>
 <fullyQualifiedTypeName name="dto.RodamientoCotizadoVO"/>
 <fullyQualifiedTypeName name="dto.FacturaVO"/>
+<fullyQualifiedTypeName name="javax.persistence.PrimaryKeyJoinColumn"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
 </qualifiedTypeNameHistroy>

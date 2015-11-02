@@ -1,14 +1,25 @@
 package entities;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="OrdenCompraProveedores")
 public class OrdenCompraProveedor {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int numero;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Proveedor", referencedColumnName="id")
 	private Proveedor proveedor;
+	@ManyToOne
+	@JoinColumn(name="id_Bulto", referencedColumnName="id")
 	private BultoCC bulto;
-	private List<ItemOrdenCompraProveedor> itemsOrdenCompraProveedor;
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="id")
+	private List<ItemOrdenCompraProveedor> itemsOrdenCompraProveedor = new ArrayList<ItemOrdenCompraProveedor>();
 	
 	public OrdenCompraProveedor() {
 

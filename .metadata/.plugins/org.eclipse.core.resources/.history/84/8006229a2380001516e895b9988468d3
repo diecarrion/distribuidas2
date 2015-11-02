@@ -1,0 +1,18 @@
+package bean.dao;
+
+import hbt.HibernateUtil;
+
+import org.hibernate.SessionFactory;
+
+public class OficinaDAO {
+	private static OficinaDAO instancia = null;
+	private static SessionFactory sf = null;
+
+	public static ClientOficinaDAOeDAO getInstancia(){
+		if(instancia == null){
+			sf = HibernateUtil.getSessionFactory();
+			instancia = new OficinaDAO();
+		} 
+		return instancia;
+	}
+}

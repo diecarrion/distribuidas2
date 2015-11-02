@@ -1,0 +1,28 @@
+package entities;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="ComparativaPrecios")
+public class ComparativaPrecio implements Serializable {
+
+	@EmbeddedId 
+	private ComparativaPrecioId idComparativaPrecio;
+	
+	public ComparativaPrecio()
+	{}
+
+	public ComparativaPrecioId getIdComparativaPrecio() {
+		return idComparativaPrecio;
+	}
+
+	public void setIdComparativaPrecio(ComparativaPrecioId idComparativaPrecio) {
+		this.idComparativaPrecio = idComparativaPrecio;
+	}
+
+
+
+	
+}

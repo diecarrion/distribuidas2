@@ -2,10 +2,20 @@ package entities;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="RemitoProveedores")
 public class RemitoProveedor {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Proveedor",referencedColumnName="id")
 	private Proveedor proveedor;
+	@OneToOne
+	@JoinColumn(name="numero_Orden",referencedColumnName="numero")
 	private OrdenCompraProveedor ordenProveedor;
 	
 	public RemitoProveedor() {

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import dto.*;
 import entities.*;
+import bean.dao.ClienteDAO;
 import bean.srv.ClienteSRV;
 import bean.srv.OficinaVentaSRV;
 
@@ -24,6 +25,11 @@ public class ClienteControlador {
 		ClienteSRV.altaCliente(c);
 	}
 	
+	public void test()
+	{
+		ClienteDAO test = ClienteDAO.getInstancia();
+		
+	}
 	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException
 	{
 		Cliente c = ClienteSRV.buscarCliente(idCliente);
@@ -38,11 +44,7 @@ public class ClienteControlador {
 
 	public void bajaCliente(int idCliente) throws RemoteException
 	{
-		Cliente c = ClienteSRV.buscarCliente(idCliente);
-		if(c != null)
-		{
-			ClienteSRV.bajaCliente(c);
-		}
+			ClienteSRV.bajaCliente(idCliente);
 	}
 	
 	public ClienteVO buscarCliente(int idCliente) throws RemoteException

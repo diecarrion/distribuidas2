@@ -1,0 +1,132 @@
+package entities;
+
+import dto.ClienteVO;
+
+import javax.persistence.*;
+
+import java.util.*;
+
+
+@Entity
+@Table(name="Clientes")
+public class Cliente {
+
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
+	private int id;
+	private String identificacion;
+	private String telefono;
+	private String cuit;
+	private String direccion;
+	private String provincia;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
+	private OficinaVenta oficina;
+	@ManyToMany (cascade=CascadeType.ALL)
+	private List<DescuentoCliente> descuentos =  new ArrayList<DescuentoCliente>();
+	@OneToMany 
+	@JoinColumn(name="id")
+	private List<Pedido> pedidos =  new ArrayList<Pedido>();
+	
+	public Cliente() {
+
+	}
+
+	public Cliente(String identificacion, String cuit, String telefono,
+			String direccion, String provincia, OficinaVenta oficina) {
+		this.identificacion = identificacion;
+		this.telefono = telefono;
+		this.cuit = cuit;
+		this.provincia = provincia;
+		this.direccion = direccion;
+		this.oficina = oficina;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getIdentificacion() {
+		return identificacion;
+	}
+
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getCuit() {
+		return cuit;
+	}
+
+	public void setCuit(String cuit) {
+		this.cuit = cuit;
+	}
+	
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+	
+	public OficinaVenta getOficinaVenta() {
+		return oficina;
+	}
+
+	public void setOficinaVenta(OficinaVenta oficina) {
+		this.oficina = oficina;
+	}
+	
+	public List<DescuentoCliente> getDescuentos() {
+		return descuentos;
+	}
+
+	public void setDescuentos(List<DescuentoCliente> descuentos) {
+		this.descuentos = descuentos;
+	}
+		
+	public OficinaVenta getOficina() {
+		return oficina;
+	}
+
+	public void setOficina(OficinaVenta oficina) {
+		this.oficina = oficina;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public ClienteVO toVO(){
+			return new ClienteVO(this.getId(), this.getIdentificacion(),this.getCuit(),this.getTelefono(), this.getDireccion(), this.getProvincia(),this.getOficinaVenta().toVO());
+	}
+
+	public boolean tieneDescuento() {
+		return false;
+	}
+}

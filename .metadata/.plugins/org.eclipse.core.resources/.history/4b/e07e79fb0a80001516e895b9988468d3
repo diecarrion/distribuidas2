@@ -1,0 +1,33 @@
+package entities;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="ComparativaPrecios")
+public class ComparativaPrecio {
+
+	@EmbeddedId 
+	private ComparativaPrecioId idComparativaPrecio;
+	
+	@ManyToOne
+	@JoinColumn(name="id",referencedColumnName="id_rodamiento", insertable=false, updatable=false)
+	private Rodamiento rodamiento;
+	@ManyToOne
+	@JoinColumn(name="id",referencedColumnName="id_listaPrecio",insertable=false, updatable=false)
+	private ListaPrecio listaPrecio;
+	
+	public ComparativaPrecio()
+	{}
+
+	public ComparativaPrecioId getIdComparativaPrecio() {
+		return idComparativaPrecio;
+	}
+
+	public void setIdComparativaPrecio(ComparativaPrecioId idComparativaPrecio) {
+		this.idComparativaPrecio = idComparativaPrecio;
+	}
+
+
+
+	
+}

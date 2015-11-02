@@ -1,0 +1,83 @@
+package entities;
+
+import java.util.*;
+
+import javax.persistence.*;
+
+import dto.*;
+
+@Entity
+@Table(name="Pedidos")
+public class Pedido {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
+	private int id;
+	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
+	private OficinaVenta oficina;
+	@ManyToOne
+	@JoinColumn(name="id_Cliente", referencedColumnName="id")
+	private Cliente cliente;
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Cotizacion cotizacion;
+	
+	public Pedido() {
+
+	}
+	
+	public Pedido(Date fecha, OficinaVenta oficina, Cliente cliente, Cotizacion cotizacion){
+		this.fecha = fecha;
+		this.oficina = oficina;
+		this.cliente = cliente;
+		this.cotizacion = cotizacion;
+	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	
+	public OficinaVenta getOficinaVenta() {
+		return oficina;
+	}
+
+	public void setOficinaVenta(OficinaVenta oficina) {
+		this.oficina = oficina;
+	}
+	
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	public Cotizacion getCotizacion() {
+		return cotizacion;
+	}
+
+	public void setCotizacion(Cotizacion cotizacion) {
+		this.cotizacion = cotizacion;
+	}	
+	
+	public PedidoVO toVO(){
+		return new PedidoVO(this.getId(),this.getFecha(), this.getOficinaVenta().toVO(), this.getCliente().toVO(), this.getCotizacion().toVO());
+	}
+}

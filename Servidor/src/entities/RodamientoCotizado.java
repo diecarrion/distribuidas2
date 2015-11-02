@@ -2,11 +2,21 @@ package entities;
 
 import java.util.ArrayList;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="RodamientoCotizados")
 public class RodamientoCotizado {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private float precioUnit;
 	private int cantidad;
+	@OneToOne
+	@JoinColumn(name="id_Rodamiento", referencedColumnName="id")
 	private Rodamiento rodamiento;
+	@OneToOne
+	@JoinColumn(name="id_Proveedor", referencedColumnName="id")
 	private Proveedor proveedor;
 	
 	

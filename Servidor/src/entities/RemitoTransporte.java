@@ -1,11 +1,20 @@
 package entities;
+import javax.persistence.*;
 
 import java.util.Date;
 
+@Entity
+@Table(name="RemitoProveedores")
 public class RemitoTransporte {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
 	private OficinaVenta oficina;
+	@OneToOne(mappedBy = "remito")
+	private BultoCC bulto;
 	
 	public RemitoTransporte() {
 

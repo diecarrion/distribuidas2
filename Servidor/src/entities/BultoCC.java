@@ -2,21 +2,31 @@ package entities;
 
 import java.util.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="BultosCC")
 public class BultoCC {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private Date fecha;
+	@OneToOne
+	@JoinColumn(name="id_Remito", referencedColumnName ="id")
 	private RemitoTransporte remito;
-	private List<OrdenCompraProveedor> ordenes;
+	
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="numero")
+	private List<OrdenCompraProveedor> ordenes = new ArrayList<OrdenCompraProveedor>();
 	
 	public BultoCC() {
 
 	}
 
-	public BultoCC(int id, Date fecha, RemitoTransporte remito, List<OrdenCompraProveedor> ordenes){
+	public BultoCC(int id, Date fecha, RemitoTransporte remito){
 		this.id = id;
 		this.fecha = fecha;
 		this.remito = remito;
-		this.ordenes = ordenes;
 	}
 	
 	public int getId() {

@@ -2,17 +2,44 @@ package entities;
 
 import java.util.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 import dto.BultoOVVO;
 import dto.PedidoVO;
 
+
+@Entity
+@Table(name="BultosOV")
 public class BultoOV {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Oficina", referencedColumnName="id")
 	private OficinaVenta oficina;
+	@OneToOne
+	@JoinColumn(name="id_Factura", referencedColumnName ="id")
 	private Factura factura;
+	@ManyToOne
+	@JoinColumn(name="id_Cliente", referencedColumnName="id")
 	private Cliente cliente;
+	@OneToOne
+	@JoinColumn(name="id_Remito", referencedColumnName ="id")
 	private RemitoCliente remito;
-	private List<OrdenCompraCliente> ordenes;
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="numero")
+	private List<OrdenCompraCliente> ordenes = new ArrayList<OrdenCompraCliente>();
 	
 	public BultoOV() {
 
@@ -23,7 +50,6 @@ public class BultoOV {
 		this.oficina = oficina;
 		this.cliente = cliente;
 		this.remito = remito;
-		this.ordenes = new ArrayList<OrdenCompraCliente>();
 	}
 	
 	public int getId() {

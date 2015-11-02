@@ -2,16 +2,24 @@ package entities;
 
 import java.util.*;
 
-import dto.ProveedorVO;
-import dto.RodamientoVO;
-public class Rodamiento {
+import javax.persistence.*;
 
-	private int id;
+import dto.*;
+
+@Entity
+@Table(name="Rodamientos")
+public class Rodamiento {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
+	@Column(name="id")
+	private int idRodamiento;
 	private String codigoSKF;
 	private String caracteristicas;
 	private String marca;
 	private String origen;
-	private List<ListaPrecioDetalle> listaDetalle;
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="id_rodamiento")
+	private List<ListaPrecioDetalle> listaDetalle = new ArrayList<ListaPrecioDetalle>();
 	
 	public Rodamiento() {
 
@@ -22,15 +30,14 @@ public class Rodamiento {
 		this.caracteristicas = caracteristicas;
 		this.marca = marca;
 		this.origen = origen;
-		this.listaDetalle = new ArrayList<ListaPrecioDetalle>();
 	}
 	
 	public int getId() {
-		return id;
+		return idRodamiento;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idRodamiento = id;
 	}
 
 	public String getCodigoSKF() {

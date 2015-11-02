@@ -1,0 +1,21 @@
+package entities;
+
+import javax.persistence.*;
+
+@Embeddable
+public class EstadoOrdenCompraClienteId {
+
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private OrdenCompraCliente ordenCliente;
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private OrdenCompraProveedor ordenProveedor;
+	
+	public EstadoOrdenCompraClienteId()
+	{
+		
+		
+	}
+	
+}

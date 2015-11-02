@@ -2,34 +2,46 @@ package entities;
 
 import java.util.*;
 
+import javax.persistence.*;
+
 import dto.ListaPrecioVO;
 
+@Entity
+@Table(name="ListaPrecios")
 public class ListaPrecio {
-	private int id;
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
+	@Column(name="id")
+	private int idPrecio;
 	private Date fecha;
+	@ManyToOne
+	@JoinColumn(name="id_Proveedor", referencedColumnName="id")
 	private Proveedor proveedor;
 	private boolean activa;
-	private List<ListaPrecioDetalle> detalles;
-	private List<DescuentoCantidad> descuentosCantidad;
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="id_listaPrecio")
+	private List<ListaPrecioDetalle> detalles =  new ArrayList<ListaPrecioDetalle>();
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="id")
+	private List<DescuentoCantidad> descuentosCantidad =  new ArrayList<DescuentoCantidad>();
 	
 	public ListaPrecio() {
 
 	}
 
 	public ListaPrecio(int id, Date fecha, float precio, Proveedor proveedor) {
-		this.id = id;
+		this.idPrecio = id;
 		this.fecha = fecha;
 		this.proveedor = proveedor;
 		this.activa = true;
-		this.detalles = new ArrayList<ListaPrecioDetalle>();
 	}
 	
 	public int getId() {
-		return id;
+		return idPrecio;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idPrecio = id;
 	}
 	
 	public Date getFecha() {

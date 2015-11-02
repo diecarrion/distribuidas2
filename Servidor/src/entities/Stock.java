@@ -2,11 +2,20 @@ package entities;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+@Entity
 public class Stock {
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private int id;
 	private int cantidad;
 	private float precioUnitario;
+	@OneToOne
+	@JoinColumn(name="id_Rodamiento", referencedColumnName="id")
 	private Rodamiento rodamiento;
+	@OneToOne
+	@JoinColumn(name="numero_Orden", referencedColumnName="numero")
 	private OrdenCompraProveedor ordenProveedor;
 	
 	public Stock() {

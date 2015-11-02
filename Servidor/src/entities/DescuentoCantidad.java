@@ -1,17 +1,32 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DescuentosCantidad")
 public class DescuentoCantidad {
-	
-	private int id;
+	@Id 
+	@GeneratedValue(strategy =  GenerationType.AUTO)
+	private int id;	
 	private int cantidad;
 	private String condEsp;
 	private float montoDescuento;
 	private float porcentaje;
 	private Date vigenteHasta;
-	private List<ListaPrecio> listaPrecios;
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="id")
+	private List<ListaPrecio> listaPrecios = new ArrayList<ListaPrecio>();
 	
 	public DescuentoCantidad() {
 	}
