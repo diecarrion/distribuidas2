@@ -1,6 +1,8 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class RemitoProveedorVO {
 	private int id;
@@ -50,4 +52,5 @@ public class RemitoProveedorVO {
 	public void setOrdenProveedor(OrdenCompraProveedorVO ordenProveedor) {
 		this.ordenProveedor = ordenProveedor;
 	}
+
 }

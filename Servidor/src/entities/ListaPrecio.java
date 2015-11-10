@@ -1,6 +1,10 @@
 package entities;
 
-import java.util.*;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -13,10 +17,13 @@ public class ListaPrecio {
 	@GeneratedValue(strategy =  GenerationType.AUTO)
 	@Column(name="id")
 	private int idPrecio;
-	private Date fecha;
+
 	@ManyToOne
 	@JoinColumn(name="id_Proveedor", referencedColumnName="id")
 	private Proveedor proveedor;
+	private Date fechaVigenciaDesde;
+	private Date fechaVigenciaHasta;
+	private float descuentoLista;
 	private boolean activa;
 	@OneToMany (cascade=CascadeType.ALL)
 	@JoinColumn(name="id_listaPrecio")
@@ -29,9 +36,10 @@ public class ListaPrecio {
 
 	}
 
-	public ListaPrecio(int id, Date fecha, float precio, Proveedor proveedor) {
+	public ListaPrecio(int id, Date fechaVigenciaDesde,Date fechaVigenciaHasta, float precio, Proveedor proveedor) {
 		this.idPrecio = id;
-		this.fecha = fecha;
+		this.fechaVigenciaDesde = fechaVigenciaDesde;
+		this.fechaVigenciaHasta = fechaVigenciaHasta;
 		this.proveedor = proveedor;
 		this.activa = true;
 	}
@@ -44,14 +52,7 @@ public class ListaPrecio {
 		this.idPrecio = id;
 	}
 	
-	public Date getFecha() {
-		return fecha;
-	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-	
 	public Proveedor getProveedor() {
 		return proveedor;
 	}
@@ -61,7 +62,7 @@ public class ListaPrecio {
 	}
 	
 	public ListaPrecioVO toVO(){
-		return new ListaPrecioVO(this.getId(),this.getFecha(), this.getProveedor().toVO());
+		return new ListaPrecioVO(this.getId(),this.getFechaVigenciaDesde(),this.getFechaVigenciaHasta(), this.getProveedor().toVO());
 	}
 
 
@@ -87,6 +88,38 @@ public class ListaPrecio {
 
 	public void setDetalles(List<ListaPrecioDetalle> detalles) {
 		this.detalles = detalles;
+	}
+
+	public int getIdPrecio() {
+		return idPrecio;
+	}
+
+	public void setIdPrecio(int idPrecio) {
+		this.idPrecio = idPrecio;
+	}
+
+	public Date getFechaVigenciaDesde() {
+		return fechaVigenciaDesde;
+	}
+
+	public void setFechaVigenciaDesde(Date fechaVigenciaDesde) {
+		this.fechaVigenciaDesde = fechaVigenciaDesde;
+	}
+
+	public Date getFechaVigenciaHasta() {
+		return fechaVigenciaHasta;
+	}
+
+	public void setFechaVigenciaHasta(Date fechaVigenciaHasta) {
+		this.fechaVigenciaHasta = fechaVigenciaHasta;
+	}
+
+	public float getDescuentoLista() {
+		return descuentoLista;
+	}
+
+	public void setDescuentoLista(float descuentoLista) {
+		this.descuentoLista = descuentoLista;
 	}
 
 }

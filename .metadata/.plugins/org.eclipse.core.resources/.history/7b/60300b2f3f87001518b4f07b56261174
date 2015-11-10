@@ -1,0 +1,32 @@
+package bean.dao;
+
+import hbt.HibernateUtil;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import entities.Cliente;
+
+public class RemitoProveedorDAO {
+	
+	private static RemitoProveedorDAO instancia = null;
+	private static SessionFactory sf = null;
+
+	public static RemitoProveedorDAO getInstancia(){
+		if(instancia == null){
+			sf = HibernateUtil.getSessionFactory();
+			instancia = new RemitoProveedorDAO();
+		} 
+		return instancia;
+	}
+	
+	public void grabarCliente(Cliente cliente){
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.persist(cliente);
+		session.flush();
+		session.getTransaction().commit();
+		session.close();
+	}
+
+}

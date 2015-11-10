@@ -31,13 +31,13 @@
 <fullyQualifiedTypeName name="entities.Rodamiento"/>
 <fullyQualifiedTypeName name="bean.srv.ClienteSRV"/>
 <fullyQualifiedTypeName name="entities.DescuentoCliente"/>
-<fullyQualifiedTypeName name="dto.ProveedorVO"/>
 <fullyQualifiedTypeName name="entities.Proveedor"/>
-<fullyQualifiedTypeName name="bean.srv.ProveedorSRV"/>
-<fullyQualifiedTypeName name="Controladores.ProveedorControlador"/>
 <fullyQualifiedTypeName name="Controladores.CotizacionControlador"/>
 <fullyQualifiedTypeName name="dto.RodamientoCotizadoVO"/>
 <fullyQualifiedTypeName name="dto.FacturaVO"/>
 <fullyQualifiedTypeName name="javax.persistence.PrimaryKeyJoinColumn"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="bean.srv.ProveedorSRV"/>
+<fullyQualifiedTypeName name="Controladores.ProveedorControlador"/>
+<fullyQualifiedTypeName name="dto.ProveedorVO"/>
 </qualifiedTypeNameHistroy>

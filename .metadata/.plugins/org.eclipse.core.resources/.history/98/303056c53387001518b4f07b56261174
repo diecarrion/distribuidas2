@@ -1,0 +1,38 @@
+package bean.srv;
+
+import hbt.HibernateUtil;
+import entities.*;
+import bean.dao.*;
+
+
+public class ProveedorSRV {
+
+	private static ProveedorDAO dao;
+	private static OrdenCompraProveedor ordendao;
+	static {
+		dao = ProveedorDAO.getInstancia();
+		ordendao = OrdenCompraProveedorDAO.getInstancia();
+	}
+	
+
+	
+	public static void altaProveedor(Proveedor proveedor){
+		dao.grabarProveedor(proveedor);
+	}
+	
+	public static Proveedor buscarProveedor(int idProveedor){
+		return dao.getProveedor(idProveedor);
+	}
+	
+	public static OrdenCompraProveedor buscarOrdenCompraProveedor(int idOrdenCompra){
+		return dao.(idProveedor);
+	}
+	
+	public static void modificarProveedor(Proveedor proveedor){
+		dao.modificarProveedor(proveedor);
+	}
+	
+	public static void bajaProveedor(int idProveedor){
+		dao.eliminarProveedor(idProveedor);
+	}
+}

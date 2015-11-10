@@ -1,0 +1,16 @@
+package bean.srv;
+
+import bean.dao.ClienteDAO;
+import entities.*;
+
+public class RodamientoSRV {
+
+	private static RodamientoDAO dao;
+	static {
+		dao = RodamientoDAO.getInstancia();
+	}
+	
+	public static Rodamiento buscarRodamiento(int idRodamiento){
+		return dao.getCliente(idCliente);
+	}
+}

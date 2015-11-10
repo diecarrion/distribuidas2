@@ -10,7 +10,7 @@ public class ItemOrdenCompraOV {
 	private int id;
 	private int cantidad;
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="id_Rodamiento", referencedColumnName="id")
+	@JoinColumn(name="id_Rodamiento", referencedColumnName="codigoSKF")
 	private Rodamiento rodamiento;
 	@ManyToOne
 	@JoinColumn(name="id_ordenCompraCliente", referencedColumnName="numero" ,insertable=false, updatable=false)

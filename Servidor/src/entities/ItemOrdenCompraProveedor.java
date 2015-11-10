@@ -1,6 +1,8 @@
 package entities;
 import javax.persistence.*;
 
+import dto.*;
+
 @Entity
 @Table(name="ItemsOrdenCompraProveedor")
 public class ItemOrdenCompraProveedor {
@@ -9,7 +11,7 @@ public class ItemOrdenCompraProveedor {
 	private int id;
 	private int cantidad;
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="id_Rodamiento", referencedColumnName="id")
+	@JoinColumn(name="id_Rodamiento", referencedColumnName="codigoSKF")
 	private Rodamiento rodamiento;
 	@ManyToOne
 	@JoinColumn(name="id_ordenCompraProveedor", referencedColumnName="numero" ,insertable=false, updatable=false)
@@ -56,5 +58,9 @@ public class ItemOrdenCompraProveedor {
 
 	public void setOrdenProveedor(OrdenCompraProveedor ordenProveedor) {
 		this.ordenProveedor = ordenProveedor;
+	}
+	
+	public ItemOrdenCompraProveedorVO toVO(){
+		return new ItemOrdenCompraProveedorVO(this.getId(),this.getCantidad(),this.getRodamiento().toVO(), this.getOrdenProveedor().toVO());
 	}
 }

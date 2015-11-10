@@ -9,10 +9,9 @@ import dto.*;
 @Entity
 @Table(name="Rodamientos")
 public class Rodamiento {
-	@Id 
-	@GeneratedValue(strategy =  GenerationType.AUTO)
+	@Id	
 	@Column(name="id")
-	private int idRodamiento;
+	private String codigoFabricante;
 	private String codigoSKF;
 	private String caracteristicas;
 	private String marca;
@@ -32,12 +31,12 @@ public class Rodamiento {
 		this.origen = origen;
 	}
 	
-	public int getId() {
-		return idRodamiento;
+	public String getCodigoFabricante() {
+		return codigoFabricante;
 	}
 
-	public void setId(int id) {
-		this.idRodamiento = id;
+	public void setCodigoFabricante(String codigo) {
+		this.codigoFabricante = codigo;
 	}
 
 	public String getCodigoSKF() {

@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import dto.*;
+
 @Entity
 @Table(name="OrdenCompraProveedores")
 public class OrdenCompraProveedor {
@@ -20,6 +22,9 @@ public class OrdenCompraProveedor {
 	@OneToMany (cascade=CascadeType.ALL)
 	@JoinColumn(name="id")
 	private List<ItemOrdenCompraProveedor> itemsOrdenCompraProveedor = new ArrayList<ItemOrdenCompraProveedor>();
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="numero")
+	private List<RemitoProveedor> remitos;
 	
 	public OrdenCompraProveedor() {
 
@@ -71,6 +76,27 @@ public class OrdenCompraProveedor {
 	public void setItemsOrdenCompraProveedor(
 			List<ItemOrdenCompraProveedor> itemsOrdenCompraProveedor) {
 		this.itemsOrdenCompraProveedor = itemsOrdenCompraProveedor;
+	}
+	
+	public void agregarRemito(RemitoProveedor rem) {
+		remitos.add(rem);	
+	}
+	
+	public void agregarItemOrdenProveedor(ItemOrdenCompraProveedor item) {
+		itemsOrdenCompraProveedor.add(item);	
+	}
+	
+	public List<ItemOrdenCompraProveedorVO> getItemsOrdenVO() {
+		List<ItemOrdenCompraProveedorVO> itemsVO = new ArrayList<ItemOrdenCompraProveedorVO>();
+		for(ItemOrdenCompraProveedor item : itemsOrdenCompraProveedor)
+		{
+			itemsVO.add(item.toVO());
+		}
+		return itemsVO;
+	}
+	
+	public OrdenCompraProveedorVO toVO(){
+		return new OrdenCompraProveedorVO(this.getNumero(),this.getFecha(),this.getProveedor().toVO(), this.getItemsOrdenVO());
 	}
 	
 }

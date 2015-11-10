@@ -1,0 +1,14 @@
+package Controladores;
+
+public class ComparativaControlador {
+
+static ComparativaControlador controlador;
+	
+	public static ComparativaControlador getControlador() {
+		if(controlador == null ){
+			controlador=new ComparativaControlador();
+		}
+		return controlador;
+	}
+	
+}

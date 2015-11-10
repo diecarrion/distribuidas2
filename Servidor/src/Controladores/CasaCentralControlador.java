@@ -4,8 +4,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.dao.ClienteDAO;
+import bean.srv.ClienteSRV;
 import bean.srv.ListaPrecioSRV;
+import bean.srv.OficinaVentaSRV;
+import bean.srv.ProveedorSRV;
 import bean.srv.RodamientoSRV;
+import bean.srv.StockSRV;
 import dto.*;
 import entities.*;
 
@@ -20,65 +25,77 @@ static CasaCentralControlador controlador;
 		return controlador;
 	}
 	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException
+	{
+		Cliente c = new Cliente(identificacion,cuit,telefono, direccion, provincia, OficinaVentaSRV.getOficinaVenta(idOficinaVenta));
+		ClienteSRV.altaCliente(c);
+	}
+	
+	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c != null)
+		{
+			c.setIdentificacion(identificacion);
+			c.setTelefono(telefono);
+			c.setDireccion(direccion);
+			ClienteSRV.modificarCliente(c);
+		}
+	}
+
+	public void bajaCliente(int idCliente) throws RemoteException
+	{
+			ClienteSRV.bajaCliente(idCliente);
+	}
+	
+	public ClienteVO buscarCliente(int idCliente) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c != null)
+		{
+			return c.toVO();
+		}
+		
+		return null;
+	}
+	
 	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion, String provincia) throws RemoteException
 	{
-		ProveedorControlador.getControlador().altaProveedor(identificacion, telefono, cuit, direccion, provincia);
+		Proveedor p = new Proveedor(identificacion,cuit,telefono, direccion,provincia);
+		ProveedorSRV.altaProveedor(p);
 	}
 	
 	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion, String provincia) throws RemoteException
 	{
-		ProveedorControlador.getControlador().modificarProveedor(idProveedor, identificacion, telefono, direccion, provincia);
+		Proveedor p = ProveedorSRV.buscarProveedor(idProveedor);
+		if(p != null)
+		{
+			p.setIdentificacion(identificacion);
+			p.setTelefono(telefono);
+			p.setDireccion(direccion);
+			p.setProvincia(provincia);
+			ProveedorSRV.modificarProveedor(p);
+		}
 	}
 	
 	public void bajaProveedor(int idProveedor) throws RemoteException
 	{
-		ProveedorControlador.getControlador().bajaProveedor(idProveedor);
+		ProveedorSRV.bajaProveedor(idProveedor);
 	}
 	
-	public List<ComparativaPrecioVO> procesarListaPreciosProgramada(List<ListaPrecioVO> listaPrecios) throws RemoteException
+	public ProveedorVO buscarProveedor(int idProveedor) throws RemoteException
 	{
-		
-		List<ComparativaPrecioVO> cpList = new ArrayList<ComparativaPrecioVO>();
-		//Agregar todas las listas de precio de todo en un array
-		//Ya tenemos todas las listas con sus rodamientos en un solo lugar y nada nos va a quedar sin comparar
-		//Ahora recorremos el array comparando por rodamiento
-		List<ComparativaDetalleVO> listaUnica = new ArrayList<ComparativaDetalleVO>();
-		
-		for(ListaPrecioVO lp : listaPrecios)
+		Proveedor p = ProveedorSRV.buscarProveedor(idProveedor);
+		if(p != null)
 		{
-			ListaPrecio l = ListaPrecioSRV.buscarListaPrecio(lp.getId());
-			for(ListaPrecioDetalle lpd : l.getDetalles())
-			{
-				ComparativaDetalleVO cd = new ComparativaDetalleVO(l.getId(),lpd.getRodamiento().getId(), lpd.getPrecio());
-				listaUnica.add(cd);
-			}
+			return p.toVO();
 		}
 		
-		
-		for(ComparativaDetalleVO det : listaUnica)
-		{
-			int lista = det.getIdListaPrecio();
-			float menorPrecio = det.getPrecio();
-			for(ComparativaDetalleVO det2 : listaUnica)
-			{
-				if(det.getIdRodamiento() == det2.getIdRodamiento() &&  det.getIdListaPrecio() != det2.getIdListaPrecio())
-				{
-					if(det2.getPrecio()< menorPrecio)
-					{
-						menorPrecio = det2.getPrecio();
-						lista = det2.getIdListaPrecio();
-					}
-					
-					listaUnica.remove(det2);
-				}
-				
-			}
-			ComparativaPrecioVO cpitem = new ComparativaPrecioVO(ListaPrecioSRV.buscarListaPrecio(lista).toVO(), RodamientoSRV.buscarRodamiento(det.getIdRodamiento()).toVO());
-			cpList.add(cpitem);
-		}
-		
-		return cpList;
+		return null;
 	}
+	
+	
+	
 	
 	public List<OrdenCompraProveedorVO> comprarRodamientos(List<OrdenCompraClienteVO> ordenesCompraCliente) throws RemoteException
 	{
@@ -96,11 +113,6 @@ static CasaCentralControlador controlador;
 	
 	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
 	{
-	}
-	
-	public ProveedorVO buscarProveedor (int idProveedor) throws RemoteException
-	{
-		return ProveedorControlador.getControlador().buscarProveedor(idProveedor);
 	}
 	
 

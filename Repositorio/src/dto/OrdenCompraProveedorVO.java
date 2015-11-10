@@ -1,24 +1,27 @@
 package dto;
 
-import java.util.Date;
+import java.util.*;
 
 public class OrdenCompraProveedorVO {
 	private int numero;
 	private Date fecha;
 	private ProveedorVO proveedor;
 	private BultoCCVO bulto;
+	private List<ItemOrdenCompraProveedorVO> items; 
 	
 	public OrdenCompraProveedorVO() {
 
 	}
 
-	public OrdenCompraProveedorVO(int num, Date fecha, ProveedorVO prov, BultoCCVO bulto){
+	public OrdenCompraProveedorVO(int num, Date fecha, ProveedorVO prov, List<ItemOrdenCompraProveedorVO> items ){
 		this.numero = num;
 		this.fecha = fecha;
 		this.proveedor = prov;
-		this.bulto = bulto;
+		this.items = items;
 	}
 	
+
+
 	public int getNumero() {
 		return numero;
 	}
@@ -49,5 +52,13 @@ public class OrdenCompraProveedorVO {
 
 	public void setBulto(BultoCCVO bulto) {
 		this.bulto = bulto;
+	}
+	
+	public List<ItemOrdenCompraProveedorVO> getItems() {
+		return items;
+	}
+
+	public void setItems(List<ItemOrdenCompraProveedorVO> items) {
+		this.items = items;
 	}
 }

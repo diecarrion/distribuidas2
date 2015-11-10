@@ -1,0 +1,29 @@
+package bean.srv;
+
+import entities.*;
+import bean.dao.*;
+
+public class StockSRV {
+	
+	private static StockDAO dao;
+	static {
+		dao = StockDAO.getInstancia();
+	}
+
+	public ItemAlmacen buscarItemAlmacen(String codigoFabricante) {
+		// TODO Auto-generated method stub
+		return dao.buscarItemAlmacen(codigoFabricante);
+	}
+
+	public void actualizarItemAlmacen(ItemAlmacen ia) {
+		// TODO Auto-generated method stub
+		dao.actualizarItemAlmacen(ia);
+		
+	}
+
+	public void altaItemAlmacen(ItemAlmacen ia) {
+		// TODO Auto-generated method stub
+		dao.altaItemAlmacen(ia);
+		
+	}
+}

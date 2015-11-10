@@ -4,21 +4,27 @@ import interfaz.ISistemaRemote;
 
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import Controladores.CasaCentralControlador;
-import Controladores.ClienteControlador;
-import Controladores.CotizacionControlador;
-import Controladores.EntregaControlador;
-import Controladores.ProveedorControlador;
-import Controladores.VentaControlador;
+import bean.srv.ProveedorSRV;
+import bean.srv.RodamientoSRV;
+import bean.srv.StockSRV;
+import Controladores.*;
 import dto.*;
+import entities.*;
 
 
 //importar controladores
 
 public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	public SistemaRemote() throws RemoteException {
 		super();
@@ -42,31 +48,174 @@ public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote
 	
 	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException
 	{
-		 ClienteControlador.getControlador().altaCliente(identificacion, telefono, cuit, direccion, provincia, idOficinaVenta);
+		 CasaCentralControlador.getControlador().altaCliente(identificacion, telefono, cuit, direccion, provincia, idOficinaVenta);
 	}
 	
 	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException
 	{
-		ClienteControlador.getControlador().modificarCliente(idCliente, identificacion, telefono, direccion); 
+		CasaCentralControlador.getControlador().modificarCliente(idCliente, identificacion, telefono, direccion); 
 		
 	}
 	
 	public void bajaCliente(int idCliente) throws RemoteException
 	{
-		ClienteControlador.getControlador().bajaCliente(idCliente);
+		CasaCentralControlador.getControlador().bajaCliente(idCliente);
 	}
 	
 	public ClienteVO buscarCliente(int idCliente) throws RemoteException
 	{
-		return ClienteControlador.getControlador().buscarCliente(idCliente);
+		return CasaCentralControlador.getControlador().buscarCliente(idCliente);
 	}
 	
-	//Casa Central
+	public void alta_listaPrecio(ListaPrecioVO lp) throws RemoteException {
+		// TODO Auto-generated method stub
+		ListaPrecio lpre = new ListaPrecio();
+		int idProveedor = lp.getProveedor().getId();
+		Proveedor p = new ProveedorSRV().buscarProveedor(idProveedor);
+		if (p!=null){
+			lpre.setId(lp.getId());
+			lpre.setDescuentoLista(lp.getDescuentoLista());
+			lpre.setFechaVigenciaDesde(lp.getFechaVigenciaDesde());
+			lpre.setFechaVigenciaHasta(lp.getFechaVigenciaHasta());
+			lpre.setActiva(true);
+			List<ListaPrecioDetalle> items = new ArrayList<ListaPrecioDetalle>();
+			
+			for(ListaPrecioDetalleVO lpd : lp.getDetalles()) { 
+	        	ListaPrecioDetalle itl = new ListaPrecioDetalle();
+	        	
+	        	itl.setPorcDescuento(lpd.getPorcDescuento());
+	        	itl.setPrecio(lpd.getPrecioUnit());
+	        	itl.setStockDisp(lpd.getStockDisp());
+	        	
+	        	Rodamiento r = new Rodamiento();
+	        	r.setCodigoFabricante(lpd.getRodamiento().getCodigoFabricante());
+	        	r.setCodigoSKF(lpd.getRodamiento().getCodigoSKF());
+	        	r.setCaracteristicas(lpd.getRodamiento().getCaracteristicas());
+	        	r.setMarca(lpd.getRodamiento().getMarca());
+	        	r.setOrigen(lpd.getRodamiento().getOrigen());
+	        	
+	        	itl.setRodamiento(r);
+	        	items.add(itl);
+	        	
+	        }
+			lpre.setDetalles(items);
+			p.agregarListaPrecio(lpre);
+			
+			new ProveedorSRV().modificarProveedor(p);
+			
+			altaComparativa(p.getId(),lpre);
+		}
+
+	}
 	
-	public List<ComparativaPrecioVO> publicarPreciosComparados(List<ListaPrecioVO> listaPrecios) throws RemoteException
+	private void altaComparativa(int idproveedor, ListaPrecio lp){
+		ComparativaControlador.getControlador().altaComparativa(idproveedor, lp);
+	}
+	
+
+	public List<ComparativaPrecioVO> consCompCodigoFabricante(
+			String codigoFabricante) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoFabricante(codigoFabricante);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoFabricanteyMarca(
+			String codigoFabricante, String marca) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoFabricanteyMarca(codigoFabricante, marca);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoFabricanteyPaisOrigen(
+			String codigoFabricante, String paisOrigen) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoFabricanteyPaisOrigen(codigoFabricante, paisOrigen);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoSFK(String codigoSFK)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoSFK(codigoSFK);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoSFKyMarca(String codigoSFK,
+			String marca) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoSFKyMarca(codigoSFK, marca);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoSFKyPaisOrigen(
+			String codigoSFK, String paisOrigen) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoSFKyPaisOrigen(codigoSFK, paisOrigen);
+	}
+
+	public List<ComparativaPrecioVO> consCompMarca(String marca)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompMarca(marca);
+	}
+
+	public List<ComparativaPrecioVO> consCompPaisOrigen(String PaisOrigen)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompPaisOrigen(PaisOrigen);
+	}
+
+	public void recepcion_Mercaderia(RemitoProveedorVO re) throws RemoteException 
 	{
-		return CasaCentralControlador.getControlador().procesarListaPreciosProgramada(listaPrecios);
+		if(re.getProveedor() != null && re.getOrdenProveedor() != null)
+		{
+			int idProveedor = re.getProveedor().getId();
+			int idOrdenCompra = re.getOrdenProveedor().getNumero();
+		
+			Proveedor prov = ProveedorSRV.buscarProveedor(idProveedor);
+			OrdenCompraProveedor oc = ProveedorSRV.buscarOrdenCompraProveedor(idOrdenCompra);
+			
+			RemitoProveedor remito = new RemitoProveedor(re.getId(), re.getFecha(),prov, oc);
+			ProveedorSRV.grabarRemito(remito);
+			
+			for(ItemOrdenCompraProveedorVO itr:re.getOrdenProveedor().getItems()){
+				ItemOrdenCompraProveedor item = new ItemOrdenCompraProveedor();
+				String codigoFabricante = itr.getRodamiento().getCodigoFabricante();
+				Rodamiento rod = RodamientoSRV.buscarRodamiento(codigoFabricante);
+				if (rod!=null){
+					item.setCantidad(itr.getCantidad());
+					item.setOrdenProveedor(oc);
+					item.setRodamiento(rod);
+					oc.agregarItemOrdenProveedor(item);
+				}
+			}
+				
+			oc.agregarRemito(remito);
+			prov.agregarRemito(remito);
+			
+			ProveedorSRV.modificarProveedor(prov);
+			actualizarStock(remito);
+		}
+		else
+		{
+			throw new RemoteException("El proveedor o la orden de compra no son correctos");
+		}
 	}
+	
+	
+	private void actualizarStock(RemitoProveedor remito) {
+		// TODO:  Cambiar precio harcodiado
+		float precioPromedio = 20;
+		for(ItemOrdenCompraProveedor itr:remito.getOrdenProveedor().getItemsOrdenCompraProveedor()){
+			String codigoFabricante = itr.getRodamiento().getCodigoFabricante();
+			Stock st = new StockSRV().buscarStock(codigoFabricante);
+			if (st!=null){
+				st.setCantidad(st.getCantidad()+itr.getCantidad());
+				st.setPrecioUnitario(precioPromedio);
+				new StockSRV().actualizarStock(st);
+			} else {
+				st = new Stock(itr.getCantidad(),precioPromedio, itr.getRodamiento(), remito.getOrdenProveedor());
+				new StockSRV().altaStock(st);
+			}
+		}
+	}
+	
 	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException
 	{
 		return new RemitoTransporteVO();

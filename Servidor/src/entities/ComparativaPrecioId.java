@@ -6,30 +6,51 @@ import javax.persistence.*;
 @Embeddable
 public class ComparativaPrecioId implements Serializable {
 
-	private int id_rodamiento;
-	private int id_listaPrecio;
+	private int idProveedor;
+	private int idLista;
+	private String codigoSFK;
+	private String codigoFabricante;
 	
-	public ComparativaPrecioId()
-	{
-		
+	public ComparativaPrecioId(int idProveedor, int idLista, String codigoSFK, String codigoFabricante) {
+		super();
+		this.idProveedor = idProveedor;
+		this.idLista = idLista;
+		this.codigoSFK = codigoSFK;
+		this.codigoFabricante = codigoFabricante;
 	}
 
-	public int getId_rodamiento() {
-		return id_rodamiento;
+	public int getIdProveedor() {
+		return idProveedor;
 	}
 
-	public void setId_rodamiento(int id_rodamiento) {
-		this.id_rodamiento = id_rodamiento;
+	public void setIdProveedor(int idProveedor) {
+		this.idProveedor = idProveedor;
 	}
 
-	public int getId_listaPrecio() {
-		return id_listaPrecio;
+	public int getIdLista() {
+		return idLista;
 	}
 
-	public void setId_listaPrecio(int id_listaPrecio) {
-		this.id_listaPrecio = id_listaPrecio;
+	public void setIdLista(int idLista) {
+		this.idLista = idLista;
 	}
-	
+
+	public String getCodigoSFK() {
+		return codigoSFK;
+	}
+
+	public void setCodigoSFK(String codigoSFK) {
+		this.codigoSFK = codigoSFK;
+	}
+
+	public String getCodigoFabricante() {
+		return codigoFabricante;
+	}
+
+	public void setCodigoFabricante(String codigoFabricante) {
+		this.codigoFabricante = codigoFabricante;
+	}
+
 	
 
 

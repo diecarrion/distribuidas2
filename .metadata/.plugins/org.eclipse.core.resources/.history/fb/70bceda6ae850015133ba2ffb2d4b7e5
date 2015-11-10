@@ -1,0 +1,132 @@
+package Controladores;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+import bean.dao.ClienteDAO;
+import bean.srv.ClienteSRV;
+import bean.srv.ListaPrecioSRV;
+import bean.srv.OficinaVentaSRV;
+import bean.srv.ProveedorSRV;
+import bean.srv.RodamientoSRV;
+import dto.*;
+import entities.*;
+
+public class CasaCentralControlador {
+	
+static CasaCentralControlador controlador;
+	
+	public static CasaCentralControlador getControlador() {
+		if(controlador == null ){
+			controlador=new CasaCentralControlador();
+		}
+		return controlador;
+	}
+	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException
+	{
+		Cliente c = new Cliente(identificacion,cuit,telefono, direccion, provincia, OficinaVentaSRV.getOficinaVenta(idOficinaVenta));
+		ClienteSRV.altaCliente(c);
+	}
+	
+	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c != null)
+		{
+			c.setIdentificacion(identificacion);
+			c.setTelefono(telefono);
+			c.setDireccion(direccion);
+			ClienteSRV.modificarCliente(c);
+		}
+	}
+
+	public void bajaCliente(int idCliente) throws RemoteException
+	{
+			ClienteSRV.bajaCliente(idCliente);
+	}
+	
+	public ClienteVO buscarCliente(int idCliente) throws RemoteException
+	{
+		Cliente c = ClienteSRV.buscarCliente(idCliente);
+		if(c != null)
+		{
+			return c.toVO();
+		}
+		
+		return null;
+	}
+	
+	public void altaProveedor(String identificacion, String telefono, String cuit, String direccion, String provincia) throws RemoteException
+	{
+		Proveedor p = new Proveedor(identificacion,cuit,telefono, direccion,provincia);
+		ProveedorSRV.altaProveedor(p);
+	}
+	
+	public void modificarProveedor(int idProveedor, String identificacion, String telefono, String direccion, String provincia) throws RemoteException
+	{
+		Proveedor p = ProveedorSRV.buscarProveedor(idProveedor);
+		if(p != null)
+		{
+			p.setIdentificacion(identificacion);
+			p.setTelefono(telefono);
+			p.setDireccion(direccion);
+			p.setProvincia(provincia);
+			ProveedorSRV.modificarProveedor(p);
+		}
+	}
+	
+	public void bajaProveedor(int idProveedor) throws RemoteException
+	{
+		ProveedorSRV.bajaProveedor(idProveedor);
+	}
+	
+	public ProveedorVO buscarProveedor(int idProveedor) throws RemoteException
+	{
+		Proveedor p = ProveedorSRV.buscarProveedor(idProveedor);
+		if(p != null)
+		{
+			return p.toVO();
+		}
+		
+		return null;
+	}
+	
+	
+	private void actualizarStock(RemitoProveedor remito) {
+		// TODO Auto-generated method stub
+		float precioPromedio = 20;
+		for(ItemOrdenCompraProveedor itr:remito.getOrdenProveedor().getItemsOrdenCompraProveedor()){
+			String codigoFabricante = itr.getRodamiento().getCodigoFabricante();
+			Stock ia = new AlmacenSRV().buscarItemAlmacen(codigoFabricante);
+			if (ia!=null){
+				ia.setCantStock(ia.getCantStock()+itr.getCantidad());
+				ia.setPrecioUnitario(precioPromedio);
+				new AlmacenSRV().actualizarItemAlmacen(ia);
+			} else {
+				ia = new ItemAlmacen(itr.getRodamiento(), itr.getCantidad(), precioPromedio);
+				new AlmacenSRV().altaItemAlmacen(ia);
+			}
+		}
+	}
+	public List<OrdenCompraProveedorVO> comprarRodamientos(List<OrdenCompraClienteVO> ordenesCompraCliente) throws RemoteException
+	{
+		return null;
+	}
+	
+	public List<BultoCCVO> generarEntrega(List<RodamientoVO> listaRodamientos, List<RemitoProveedorVO> remitosProveedor) throws RemoteException
+	{
+		return null;
+	}
+	
+	public void altaStock(int idRodamiento, int cantidadInicial, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
+	{
+	}
+	
+	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
+	{
+	}
+	
+
+}

@@ -4,7 +4,7 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import dto.ProveedorVO;;
+import dto.*;
 
 @Entity
 @Table(name="Proveedores")
@@ -21,7 +21,16 @@ public class Proveedor {
 	@JoinColumn(name="id")
 	private List <ListaPrecio> listaPrecios = new ArrayList<ListaPrecio>();
 	
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="numero")
+	private List <OrdenCompraProveedor> ordenes = new ArrayList<OrdenCompraProveedor>();
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="id")
+	private List<RemitoProveedor> remitos;
+	
+
+
 	public Proveedor() {
 
 	}
@@ -91,9 +100,52 @@ public class Proveedor {
 	public void setListaPrecios(List<ListaPrecio> listaPrecios) {
 		this.listaPrecios = listaPrecios;
 	}
+	
+	public void agregarListaPrecio(ListaPrecio lp)
+	{
+		this.listaPrecios.add(lp);
+	}
 
+	public List<OrdenCompraProveedor> getOrdenes() {
+		return ordenes;
+	}
+
+	public void setOrdenes(List<OrdenCompraProveedor> ordenes) {
+		this.ordenes = ordenes;
+	}
+
+	public List<RemitoProveedor> getRemitos() {
+		return remitos;
+	}
+
+	public void setRemitos(List<RemitoProveedor> remitos) {
+		this.remitos = remitos;
+	}
+
+	public void agregarRemito(RemitoProveedor rem) {
+		remitos.add(rem);	
+	}
+	
+	public List<OrdenCompraProveedorVO> getOrdenesCompraVO() {
+		List<OrdenCompraProveedorVO> itemsVO = new ArrayList<OrdenCompraProveedorVO>();
+		for(OrdenCompraProveedor item : ordenes)
+		{
+			itemsVO.add(item.toVO());
+		}
+		return itemsVO;
+	}
+	
+	public List<RemitoProveedorVO> getRemitosProveedorVO() {
+		List<RemitoProveedorVO> itemsVO = new ArrayList<RemitoProveedorVO>();
+		for(RemitoProveedor item : remitos)
+		{
+			itemsVO.add(item.toVO());
+		}
+		return itemsVO;
+	}
+	
 	public ProveedorVO toVO(){
-		return new ProveedorVO(this.getId(), this.getIdentificacion(),this.getCuit(),this.getTelefono(), this.getDireccion(), this.getProvincia());
+		return new ProveedorVO(this.getId(), this.getIdentificacion(),this.getCuit(),this.getTelefono(), this.getDireccion(), this.getProvincia(),this.getOrdenesCompraVO(), this.getRemitosProveedorVO());
 	}
 	
 }

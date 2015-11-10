@@ -9,17 +9,16 @@ import entities.*;
 
 public class Inicio {
 	public static void main(String[] arg){
-		ClienteControlador sistema = new ClienteControlador();
-		ProveedorControlador provController = new ProveedorControlador();
+		CasaCentralControlador sistema = new CasaCentralControlador();
 		try {
-		/*	sistema.altaCliente("Diego Carrion", "34334352", "20-35375460-3", "Calle Falsa 123", "Mendoza", 1);
+			sistema.altaCliente("Diego Carrion", "34334352", "20-35375460-3", "Calle Falsa 123", "Mendoza", 1);
 			sistema.modificarCliente(1, "Diego Sota", "34334352",  "Calle Chota 123");
 			ClienteVO cliente = sistema.buscarCliente(1);
-			sistema.bajaCliente(cliente.getId());*/
-			provController.altaProveedor("Martin Banfi", "34234234", "20-35360361-3", "Jordan 123", "Tierra del Fuego");
-			provController.modificarProveedor(1, "Pisculichi", "234324",  "Calle Chota 123","Cuba");
-			ProveedorVO proveedor = provController.buscarProveedor(1);
-			provController.bajaProveedor(proveedor.getId());
+			sistema.bajaCliente(cliente.getId());
+			sistema.altaProveedor("Martin Banfi", "34234234", "20-35360361-3", "Jordan 123", "Tierra del Fuego");
+			sistema.modificarProveedor(1, "Pisculichi", "234324",  "Calle Chota 123","Cuba");
+			ProveedorVO proveedor = sistema.buscarProveedor(1);
+			sistema.bajaProveedor(proveedor.getId());
 		
 			
 		} catch (RemoteException e) {

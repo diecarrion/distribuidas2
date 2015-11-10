@@ -1,7 +1,9 @@
 package entities;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
+
+import dto.FacturaVO;
+import dto.ListaPrecioDetalleVO;
 
 @Entity
 @Table(name="ListaPrecioDetalles")
@@ -10,12 +12,14 @@ public class ListaPrecioDetalle {
 	@EmbeddedId 
 	private ListaPrecioDetalleId idListaPrecioDetalle;
 	@ManyToOne
-	@JoinColumn(name="id",insertable=false, updatable=false)
+	@JoinColumn(name="codigoSKF",insertable=false, updatable=false)
 	private Rodamiento rodamiento;
 	@ManyToOne
 	@JoinColumn(name="id",insertable=false, updatable=false)
 	private ListaPrecio listaPrecio;
 	private float precio;
+	private int stockDisp;
+	private float porcDescuento;
 	
 	public ListaPrecioDetalle()
 	{
@@ -50,6 +54,21 @@ public class ListaPrecioDetalle {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
+	public int getStockDisp() {
+		return stockDisp;
+	}
+	public void setStockDisp(int stockDisp) {
+		this.stockDisp = stockDisp;
+	}
+	public float getPorcDescuento() {
+		return porcDescuento;
+	}
+	public void setPorcDescuento(float porcDescuento) {
+		this.porcDescuento = porcDescuento;
+	}
 	
+	public ListaPrecioDetalleVO toVO(){
+		return new ListaPrecioDetalleVO(this.getRodamiento().toVO(), this.getStockDisp(),this.getPrecio(), this.getPorcDescuento());
+	}
 
 }

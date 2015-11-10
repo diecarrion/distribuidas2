@@ -1,0 +1,12 @@
+package bean.srv;
+
+import bean.dao.ClienteDAO;
+
+public class StockSRV {
+	
+	private static StockDAO dao;
+	static {
+		dao = StockDAO.getInstancia();
+	}
+
+}

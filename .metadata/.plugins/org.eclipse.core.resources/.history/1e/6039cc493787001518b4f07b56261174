@@ -1,0 +1,53 @@
+package dto;
+
+import java.io.Serializable;
+
+public class ItemRemitoProveedorVO implements Serializable {
+
+	private int id;
+	private int cantidad;
+	private RodamientoVO rodamiento;
+	
+	
+	public ItemRemitoProveedorVO(int id, int cantidad,
+			RodamientoVO rodamiento) {
+		super();
+		this.id = id;
+		this.cantidad = cantidad;
+		this.rodamiento = rodamiento;
+	}
+	public ItemRemitoProveedorVO() {
+		// TODO Auto-generated constructor stub
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	/**
+	 * @return the cantidad
+	 */
+	public int getCantidad() {
+		return cantidad;
+	}
+	/**
+	 * @param cantidad the cantidad to set
+	 */
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+	/**
+	 * @return the rodamiento
+	 */
+	public RodamientoView getRodamiento() {
+		return rodamiento;
+	}
+	/**
+	 * @param rodamiento the rodamiento to set
+	 */
+	public void setRodamiento(RodamientoView rodamiento) {
+		this.rodamiento = rodamiento;
+	}
+	
+}

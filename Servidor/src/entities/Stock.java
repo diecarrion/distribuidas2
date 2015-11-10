@@ -22,8 +22,7 @@ public class Stock {
 
 	}
 
-	public Stock(int id, int cantidad, float precioUnitario, Rodamiento rodamiento, OrdenCompraProveedor ordenProveedor){
-		this.id = id;
+	public Stock(int cantidad, float precioUnitario, Rodamiento rodamiento, OrdenCompraProveedor ordenProveedor){
 		this.cantidad = cantidad;
 		this.precioUnitario = precioUnitario;
 		this.rodamiento = rodamiento;

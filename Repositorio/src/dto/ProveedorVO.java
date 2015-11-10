@@ -1,4 +1,7 @@
 package dto;
+
+import java.util.List;
+
 public class ProveedorVO {
 	private int id;
 	private String identificacion;
@@ -6,19 +9,23 @@ public class ProveedorVO {
 	private String cuit;
 	private String direccion;
 	private String provincia;
+	private List<OrdenCompraProveedorVO> ordenes;
+	private List<RemitoProveedorVO> remitos;
 	
 	public ProveedorVO() {
 
 	}
 
 	public ProveedorVO(int id, String identificacion, String cuit, String telefono,
-			String direccion, String provincia) {
+			String direccion, String provincia, List<OrdenCompraProveedorVO> ordenes, List<RemitoProveedorVO> remitos ) {
 		this.id = id;
 		this.identificacion = identificacion;
 		this.telefono = telefono;
 		this.cuit = cuit;
 		this.provincia = provincia;
 		this.direccion = direccion;
+		this.ordenes = ordenes;
+		this.remitos = remitos;
 	}
 	
 	public int getId() {
@@ -67,5 +74,21 @@ public class ProveedorVO {
 
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
+	}
+
+	public List<OrdenCompraProveedorVO> getOrdenes() {
+		return ordenes;
+	}
+
+	public void setOrdenes(List<OrdenCompraProveedorVO> ordenes) {
+		this.ordenes = ordenes;
+	}
+
+	public List<RemitoProveedorVO> getRemitos() {
+		return remitos;
+	}
+
+	public void setRemitos(List<RemitoProveedorVO> remitos) {
+		this.remitos = remitos;
 	}
 }

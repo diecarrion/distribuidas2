@@ -1,0 +1,17 @@
+package bean.srv;
+
+import bean.dao.ClienteDAO;
+import entities.*;
+
+public class ComparativaPrecioSRV {
+
+	private static ComparativaDAO dao;
+	static {
+		dao = ComparativaDAO.getInstancia();
+	}
+	
+	public static ListaPrecioDetalle mejorPrecio(Rodamiento rodamiento){
+		// A IMPLEMENTAR
+		return new ListaPrecioDetalle();
+	}
+}

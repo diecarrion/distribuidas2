@@ -1,0 +1,34 @@
+package bean.dao;
+
+import hbt.HibernateUtil;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import entities.*;
+
+public class OrdenCompraProveedorDAO {
+
+	private static OrdenCompraProveedorDAO instancia = null;
+	private static SessionFactory sf = null;
+	
+	public static OrdenCompraProveedorDAO getInstancia(){
+		if(instancia == null){
+			sf = HibernateUtil.getSessionFactory();
+			instancia = new OrdenCompraProveedorDAO();
+		} 
+		return instancia;
+	}
+	
+	public OrdenCompraProveedor getOrdenCompraProveedor(int id) {
+		Session session = sf.openSession();
+		Query q = session.createQuery("FROM Proveedor p WHERE p.id = :id");
+		q.setParameter("id", id);
+		Proveedor p = (Proveedor) q.uniqueResult();
+		session.close();
+		return p;
+		
+	}
+	
+}

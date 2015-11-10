@@ -27,8 +27,6 @@ public interface ISistemaRemote extends Remote {
 	
 	//Casa Central
 	
-	public List<ComparativaPrecioVO> publicarPreciosComparados(List<ListaPrecioVO> listaPrecios) throws RemoteException;
-		
 	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException;
 	
 

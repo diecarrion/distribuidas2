@@ -14,7 +14,7 @@ public class ItemFactura {
 	private int cantidad;
 	private float precioUnitario;
 	@ManyToOne
-	@JoinColumn(name="id_Rodamiento", referencedColumnName="id")
+	@JoinColumn(name="id_Rodamiento", referencedColumnName="codigoSKF")
 	private Rodamiento rodamiento;
 	@ManyToOne
 	@JoinColumn(name="id_Factura", referencedColumnName="id")

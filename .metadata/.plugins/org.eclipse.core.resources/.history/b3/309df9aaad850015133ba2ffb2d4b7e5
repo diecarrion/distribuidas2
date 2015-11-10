@@ -1,0 +1,54 @@
+package bean.dao;
+
+import hbt.HibernateUtil;
+
+import org.hibernate.SessionFactory;
+
+public class StockDAO {
+
+	private static StockDAO instancia = null;
+	private static SessionFactory sf = null;
+
+	public static StockDAO getInstancia(){
+		if(instancia == null){
+			sf = HibernateUtil.getSessionFactory();
+			instancia = new StockDAO();
+		} 
+		return instancia;
+	}
+	
+	public void altaStock(Stock ia) {
+		// TODO Auto-generated method stub
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.persist(ia);
+		session.flush();
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	public void actualizarItemAlmacen(ItemAlmacen ia) {
+		// TODO Auto-generated method stub
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.merge(ia);
+		session.flush();
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	public ItemAlmacen buscarItemAlmacen(String codigoFabricante) {
+		// TODO Auto-generated method stub
+		Session session = sf.openSession();
+		
+		ItemAlmacen ia = (ItemAlmacen) session.createQuery(
+				"from ItemAlmacen ia join Rodamiento rod" + 
+				"where rod.codigoFabricante = ?")
+				.setString(0,codigoFabricante)
+				.list();
+	
+		session.close();
+		return ia;	
+	}
+	
+}

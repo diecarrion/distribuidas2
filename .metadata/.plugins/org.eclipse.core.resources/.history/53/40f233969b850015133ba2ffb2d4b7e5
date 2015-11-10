@@ -1,0 +1,16 @@
+package bean.srv;
+
+import bean.dao.*;
+import entities.*;
+
+public class ComparativaPrecioSRV {
+
+	private static ComparativaDAO dao;
+	static {
+		dao = ComparativaDAO.getInstancia();
+	}
+	
+	public void grabarComparativa(Comparativa comp){
+		dao.grabarComparativa(comp);
+	}
+}

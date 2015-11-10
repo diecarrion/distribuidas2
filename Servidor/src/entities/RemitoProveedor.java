@@ -1,8 +1,11 @@
 package entities;
 
-import java.util.Date;
+import java.util.*;
 
 import javax.persistence.*;
+
+import dto.ProveedorVO;
+import dto.RemitoProveedorVO;
 
 @Entity
 @Table(name="RemitoProveedores")
@@ -60,4 +63,9 @@ public class RemitoProveedor {
 	public void setOrdenProveedor(OrdenCompraProveedor ordenProveedor) {
 		this.ordenProveedor = ordenProveedor;
 	}
+	
+	public RemitoProveedorVO toVO(){
+		return new RemitoProveedorVO(this.getId(),this.getFecha(),this.getProveedor().toVO(), this.getOrdenProveedor().toVO());
+	}
+
 }

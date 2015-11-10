@@ -1,0 +1,38 @@
+package entities;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="ItemRemitoProveedor")
+public class ItemRemitoProveedor {
+	
+	@Id 
+	@GeneratedValue
+	private int id;
+	private int cantidad;
+	@ManyToOne (cascade = CascadeType.ALL)
+	@JoinColumn(name="codigoSFK")
+	private Rodamiento rodamiento;
+	
+	public ItemRemitoProveedor(Rodamiento rod, int cant) {
+		this.rodamiento = rod;
+		this.cantidad = cant;
+	}
+
+	public Rodamiento getRodamiento() {
+		return rodamiento;
+	}
+
+	public void setRodamiento(Rodamiento rodamiento) {
+		this.rodamiento = rodamiento;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+}

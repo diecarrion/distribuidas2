@@ -1,0 +1,9 @@
+package bean.dao;
+
+import org.hibernate.SessionFactory;
+
+public class OrdenCompraProveedorDAO {
+
+	private static OrdenCompraProveedorDAO instancia = null;
+	private static SessionFactory sf = null;
+}

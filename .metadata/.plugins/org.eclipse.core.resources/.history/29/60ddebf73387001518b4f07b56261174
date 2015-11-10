@@ -1,0 +1,209 @@
+package rmi;
+
+import interfaz.ISistemaRemote;
+
+import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import bean.srv.ProveedorSRV;
+import Controladores.*;
+import dto.*;
+import entities.ListaPrecio;
+import entities.ListaPrecioDetalle;
+import entities.Proveedor;
+import entities.RemitoProveedor;
+import entities.Rodamiento;
+
+
+//importar controladores
+
+public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public SistemaRemote() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException
+	{
+		return CotizacionControlador.getControlador().generarCotizacion(idCliente, listaRodamientos, validez);
+	}
+	
+	public OrdenCompraClienteVO generarVenta(int idCliente, int idCotizacion, Date fechaVenta) throws RemoteException
+	{
+		return VentaControlador.getControlador().generarVenta(idCliente, idCotizacion, fechaVenta);
+	}
+	
+	public List<BultoOVVO> generarEntrega (List<Integer> idsOrdenCompra, BultoCCVO bultoCC) throws RemoteException
+	{
+		return EntregaControlador.getControlador().generarEntrega(idsOrdenCompra, bultoCC);	
+	}
+	
+	public void altaCliente(String identificacion, String telefono, String cuit, String direccion, String provincia, int idOficinaVenta) throws RemoteException
+	{
+		 CasaCentralControlador.getControlador().altaCliente(identificacion, telefono, cuit, direccion, provincia, idOficinaVenta);
+	}
+	
+	public void modificarCliente(int idCliente, String identificacion, String telefono, String direccion) throws RemoteException
+	{
+		CasaCentralControlador.getControlador().modificarCliente(idCliente, identificacion, telefono, direccion); 
+		
+	}
+	
+	public void bajaCliente(int idCliente) throws RemoteException
+	{
+		CasaCentralControlador.getControlador().bajaCliente(idCliente);
+	}
+	
+	public ClienteVO buscarCliente(int idCliente) throws RemoteException
+	{
+		return CasaCentralControlador.getControlador().buscarCliente(idCliente);
+	}
+	
+	public void alta_listaPrecio(ListaPrecioVO lp) throws RemoteException {
+		// TODO Auto-generated method stub
+		ListaPrecio lpre = new ListaPrecio();
+		int idProveedor = lp.getProveedor().getId();
+		Proveedor p = new ProveedorSRV().buscarProveedor(idProveedor);
+		if (p!=null){
+			lpre.setId(lp.getId());
+			lpre.setDescuentoLista(lp.getDescuentoLista());
+			lpre.setFechaVigenciaDesde(lp.getFechaVigenciaDesde());
+			lpre.setFechaVigenciaHasta(lp.getFechaVigenciaHasta());
+			lpre.setActiva(true);
+			List<ListaPrecioDetalle> items = new ArrayList<ListaPrecioDetalle>();
+			
+			for(ListaPrecioDetalleVO lpd : lp.getDetalles()) { 
+	        	ListaPrecioDetalle itl = new ListaPrecioDetalle();
+	        	
+	        	itl.setPorcDescuento(lpd.getPorcDescuento());
+	        	itl.setPrecio(lpd.getPrecioUnit());
+	        	itl.setStockDisp(lpd.getStockDisp());
+	        	
+	        	Rodamiento r = new Rodamiento();
+	        	r.setCodigoFabricante(lpd.getRodamiento().getCodigoFabricante());
+	        	r.setCodigoSKF(lpd.getRodamiento().getCodigoSKF());
+	        	r.setCaracteristicas(lpd.getRodamiento().getCaracteristicas());
+	        	r.setMarca(lpd.getRodamiento().getMarca());
+	        	r.setOrigen(lpd.getRodamiento().getOrigen());
+	        	
+	        	itl.setRodamiento(r);
+	        	items.add(itl);
+	        	
+	        }
+			lpre.setDetalles(items);
+			p.agregarListaPrecio(lpre);
+			
+			new ProveedorSRV().modificarProveedor(p);
+			
+			altaComparativa(p.getId(),lpre);
+		}
+
+	}
+	
+	private void altaComparativa(int idproveedor, ListaPrecio lp){
+		ComparativaControlador.getControlador().altaComparativa(idproveedor, lp);
+	}
+	
+
+	public List<ComparativaPrecioVO> consCompCodigoFabricante(
+			String codigoFabricante) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoFabricante(codigoFabricante);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoFabricanteyMarca(
+			String codigoFabricante, String marca) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoFabricanteyMarca(codigoFabricante, marca);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoFabricanteyPaisOrigen(
+			String codigoFabricante, String paisOrigen) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoFabricanteyPaisOrigen(codigoFabricante, paisOrigen);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoSFK(String codigoSFK)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoSFK(codigoSFK);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoSFKyMarca(String codigoSFK,
+			String marca) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoSFKyMarca(codigoSFK, marca);
+	}
+
+	public List<ComparativaPrecioVO> consCompCodigoSFKyPaisOrigen(
+			String codigoSFK, String paisOrigen) throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompCodigoSFKyPaisOrigen(codigoSFK, paisOrigen);
+	}
+
+	public List<ComparativaPrecioVO> consCompMarca(String marca)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompMarca(marca);
+	}
+
+	public List<ComparativaPrecioVO> consCompPaisOrigen(String PaisOrigen)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return ComparativaControlador.getControlador().consCompPaisOrigen(PaisOrigen);
+	}
+
+	public void recepcion_Mercaderia(RemitoProveedorVO re) throws RemoteException 
+	{
+		if(re.getProveedor() != null && re.getOrdenProveedor() != null)
+		{
+			int idProveedor = re.getProveedor().getId();
+			int idOrdenCompra = re.getOrdenProveedor().getNumero();
+		
+			Proveedor prov = ProveedorSRV.buscarProveedor(idProveedor);
+			
+			RemitoProveedor remito = new RemitoProveedor(re.getId(), re.getFecha(),re.getProveedor(), re.getOrdenProveedor());
+			
+			for(ItemRemitoView itr:re.getItems()){
+				String codigoFabricante = itr.getRodamiento().getCodigoFabricante();
+				Rodamiento rod = buscarRodamiento(codigoFabricante);
+				if (rod!=null){
+					remito.addItemRemito(rod, itr.getCantidad());
+				}
+			}
+				
+			Proveedor p = buscarProveedor(idProveedor);
+			if (p!=null){
+				for(OrdenCompra oc:p.getOrdenesCompra()){
+					if (oc.getNroOC() == idOrdenCompra){
+						oc.agregarRemito(remito);
+						p.agregarRemito(remito);
+						new ProveedorSRV().modificarProveedor(p);
+		
+					}
+					actualizarAlmacen(remito);
+				}
+			}
+		}
+		else
+		{
+			throw new RemoteException("El proveedor o la orden de compra no son correctos");
+		}
+	}
+	
+	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException
+	{
+		return new RemitoTransporteVO();
+	}
+
+}

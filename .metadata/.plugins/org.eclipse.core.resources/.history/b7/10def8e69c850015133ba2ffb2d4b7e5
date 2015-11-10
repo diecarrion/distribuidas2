@@ -1,0 +1,29 @@
+package bean.dao;
+
+import hbt.HibernateUtil;
+import entities.*;
+
+import org.hibernate.SessionFactory;
+
+public class ComparativaDAO {
+
+	private static ComparativaDAO instancia = null;
+	private static SessionFactory sf = null;
+
+	public static ComparativaDAO getInstancia(){
+		if(instancia == null){
+			sf = HibernateUtil.getSessionFactory();
+			instancia = new ComparativaDAO();
+		} 
+		return instancia;
+	}
+	
+	public void grabarComparativa(ComparativaPrecio comp){
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.persist(comp);
+		session.flush();
+		session.getTransaction().commit();
+		session.close();
+	}
+}

@@ -2,7 +2,7 @@ package dto;
 
 public class RodamientoVO {
 
-	private int id;
+	private String codigoFabricante;
 	private String codigoSKF;
 	private String caracteristicas;
 	private String marca;
@@ -19,14 +19,14 @@ public class RodamientoVO {
 		this.origen = origen;
 	}
 	
-	public int getId() {
-		return id;
+	public String getCodigoFabricante() {
+		return codigoFabricante;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCodigoFabricante(String codigo) {
+		this.codigoFabricante = codigo;
 	}
-
+	
 	public String getCodigoSKF() {
 		return codigoSKF;
 	}

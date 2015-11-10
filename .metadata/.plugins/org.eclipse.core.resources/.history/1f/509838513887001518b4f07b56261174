@@ -1,0 +1,12 @@
+package bean.srv;
+
+import bean.dao.ClienteDAO;
+import entities.*;
+
+public class RodamientoSRV {
+
+	private static RodamientoDAO dao;
+	static {
+		dao = RodamientoDAO.getInstancia();
+	}
+}

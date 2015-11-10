@@ -1,0 +1,9 @@
+package entities;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="ItemRemitoProveedor")
+public class ItemRemitoProveedor {
+
+}

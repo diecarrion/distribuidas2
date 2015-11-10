@@ -1,0 +1,63 @@
+package Controladores;
+import java.util.*;
+import java.sql.*;
+import entities.*;
+
+public class ComparativaControlador {
+
+static ComparativaControlador controlador;
+	
+	public static ComparativaControlador getControlador() {
+		if(controlador == null ){
+			controlador=new ComparativaControlador();
+		}
+		return controlador;
+	}
+	
+	public void altaComparativa(int idProveedor, ListaPrecio lp) {
+		// TODO Auto-generated method stub
+		int idLista = lp.getId();
+		float descuentoLista = 100;
+		if (lp.getDescuentoLista()>0){
+			descuentoLista = lp.getDescuentoLista();
+		} 
+
+		java.util.Date fecha = new java.util.Date();
+		java.sql.Date FechaVigenciaDesde = new java.sql.Date(fecha.getTime());
+		java.sql.Date FechaVigenciaHasta = lp.getFechaVigenciaHasta();
+		
+		ComparativaPrecio comp = new ComparativaPrecio();
+		
+		for(ListaPrecioDetalle itl:lp.getDetalles()){
+			Rodamiento newRod = new Rodamiento();
+			
+			newRod.setCodigoSKF(itl.getRodamiento().getCodigoSKF());
+			newRod.setMarca(itl.getRodamiento().getMarca());
+			newRod.setOrigen(itl.getRodamiento().getOrigen());
+			newRod.setCaracteristicas(itl.getRodamiento().getCaracteristicas());
+			newRod.setCodigoFabricante(itl.getRodamiento().getCodigoFabricante());
+			
+			float precioUnitario = itl.getPrecio();
+			float stockDisp = itl.getStockDisp();
+			float descuentoItem = itl.getPorcDescuento();
+		
+			if (descuentoItem == 0){
+				descuentoItem = 100;
+			} 
+			float precioCalculado = precioUnitario * ((100-descuentoItem)/100) * ((100-descuentoLista)/100);
+			
+			comp.setIdComparativaPrecio(newRod.getCodigoFabricante(),newRod.getCodigoSKF(),lp.getId(),idproveedor);
+			comp.setPrecioCalculado(precioCalculado);
+			comp.setStockDisp(stockDisp);
+			comp.setVigenciaDesde(FechaVigenciaDesde);
+			comp.setVigenciaHasta(FechaVigenciaHasta);
+			comp.setPaisOrigen(paisOrigen);
+			comp.setMarca(marca);
+			comp.setCaracteristicas(caracteristicas);
+			
+			new ComparativaSRV().grabarComparativa(comp);
+			
+		}	
+		
+	}
+}
