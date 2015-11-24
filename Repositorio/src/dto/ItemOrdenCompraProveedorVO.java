@@ -1,6 +1,8 @@
 package dto;
 
-public class ItemOrdenCompraProveedorVO {
+import java.io.Serializable;
+
+public class ItemOrdenCompraProveedorVO implements Serializable {
 
 	private int id;
 	private int cantidad;

@@ -1,0 +1,22 @@
+package Controladores;
+
+
+public class Sistema {
+
+	public Sistema()
+	{
+		try {
+			p = new ProxyModeloConcreto();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void doAlta_LP(ListaPreciosView lp)
+	{
+		ProxyModeloConcreto p = (ProxyModeloConcreto) getModelo();
+		p.alta_listaP(lp);
+	}
+	
+}

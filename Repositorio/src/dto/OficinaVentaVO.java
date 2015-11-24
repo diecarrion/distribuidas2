@@ -1,6 +1,8 @@
 package dto;
 
-public class OficinaVentaVO {
+import java.io.Serializable;
+
+public class OficinaVentaVO implements Serializable {
 
 	private int id;
 	private String nombre;

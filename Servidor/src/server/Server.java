@@ -1,6 +1,7 @@
 package server;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 import interfaz.ISistemaRemote;
 import rmi.*;
@@ -26,8 +27,9 @@ public class Server {
 			
 			LocateRegistry.createRegistry(1099);	
 			objetoRemoto = new SistemaRemote();
-	        Naming.rebind ("//localhost/Sistema", objetoRemoto);
+	        Naming.rebind("//localhost/Sistema", objetoRemoto);
 	        System.out.println("Fijado en //localhost/Sistema");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

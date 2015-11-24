@@ -1,8 +1,9 @@
 package dto;
+import java.io.Serializable;
 import java.sql.Date;
 
 
-public class ComparativaPrecioVO {
+public class ComparativaPrecioVO implements Serializable {
 	private int idProveedor;
 	private int idLista;
 	private String codigoSFK;
@@ -19,7 +20,6 @@ public class ComparativaPrecioVO {
 			String codigoFabricante, String paisOrigen, String marca,
 			String caracteristicas, float precioCalculado, int stockDisp,
 			Date fechaVigenciaDesde, Date fechaVigenciaHasta) {
-		super();
 		this.idProveedor = idProveedor;
 		this.idLista = idLista;
 		this.codigoSFK = codigoSFK;
@@ -35,7 +35,6 @@ public class ComparativaPrecioVO {
 
 
 	public ComparativaPrecioVO() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
 

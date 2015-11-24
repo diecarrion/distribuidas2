@@ -1,0 +1,19 @@
+package bean.dao;
+
+import hbt.HibernateUtil;
+
+import org.hibernate.SessionFactory;
+
+public class OrdenCompraClienteDAO {
+
+	private static OrdenCompraClienteDAO instancia = null;
+	private static SessionFactory sf = null;
+	
+	public static OrdenCompraClienteDAO getInstancia(){
+		if(instancia == null){
+			sf = HibernateUtil.getSessionFactory();
+			instancia = new OrdenCompraClienteDAO();
+		} 
+		return instancia;
+	}
+}

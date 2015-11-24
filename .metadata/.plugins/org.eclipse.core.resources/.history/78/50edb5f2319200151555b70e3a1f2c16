@@ -1,0 +1,15 @@
+package bean.srv;
+
+import bean.dao.OrdenCompraClienteDAO;
+import bean.dao.OrdenCompraProveedorDAO;
+import bean.dao.ProveedorDAO;
+import bean.dao.RemitoProveedorDAO;
+
+public class OrdenCompraSRV {
+	
+	private static OrdenCompraClienteDAO ordendao;
+	static {
+		dao = OrdenCompraClienteDAO.getInstancia();
+	}
+
+}

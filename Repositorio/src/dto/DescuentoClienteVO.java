@@ -1,7 +1,8 @@
 package dto;
+import java.io.Serializable;
 import java.util.Date;
 
-public class DescuentoClienteVO {
+public class DescuentoClienteVO  implements Serializable{
 	private int id;
 	private String condEsp;
 	private float montoDescuento;

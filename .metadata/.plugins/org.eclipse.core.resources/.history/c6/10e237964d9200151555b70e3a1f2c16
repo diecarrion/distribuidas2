@@ -1,0 +1,28 @@
+package Controladores;
+
+import java.rmi.RemoteException;
+
+import businessDelegate.BusinessDelegate;
+import dto.*;
+
+
+public class Sistema {
+
+	private static BusinessDelegate bd = null;
+	public Sistema()
+	{
+		try {
+			p = new ProxyModeloConcreto();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void AltaListaPrecio(ListaPrecioVO lp)
+	{
+		
+		p.alta_listaP(lp);
+	}
+	
+}

@@ -1,0 +1,28 @@
+package Controladores;
+
+import java.rmi.RemoteException;
+
+import businessDelegate.BusinessDelegate;
+import dto.*;
+
+
+public class Sistema {
+
+	private static BusinessDelegate bd = null;
+	public Sistema()
+	{
+		try {
+			bd = new BusinessDelegate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void AltaListaPrecio(ListaPrecioVO lp)
+	{
+		bd.alta_listaPrecio(lp);
+		p.alta_listaP(lp);
+	}
+	
+}

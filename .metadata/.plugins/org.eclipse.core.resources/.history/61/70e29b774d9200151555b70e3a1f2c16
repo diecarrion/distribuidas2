@@ -1,0 +1,381 @@
+package swing;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+// import java.rmi.RemoteException;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import javax.swing.WindowConstants;
+
+import controlador.Controlador;
+import controlador.ControladorAdmListasPrecios;
+import controlador.ControladorAdmProveedores;
+import controlador.ControladorAdmStock;
+import controlador.ControladorGanancia;
+// import controlador.ControladorMenuPrincipal;
+
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
+public class MenuPrincipal extends javax.swing.JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5650514150969329019L;
+	private JMenuBar jMenuBarMP;
+	private JMenu jMenu1;
+	private JMenuItem jMenuItemAltaStock;
+	private JMenuItem jMenuItemConStock;
+	private JMenuItem jMenuItemAltaProveedor;
+	private JMenuItem jMenuItemConfirmarCompraRec;
+	private JMenuItem jMenuItemSalir;
+	private JMenu jMenuSalir;
+	private JMenuItem jMenuItemAltaLista;
+	private JMenuItem jMenuItemPorcentajeGanancia;
+	private JMenu jMenuGanancia;
+	private JMenu jMenuCompraRodamiento;
+	private JMenu jMenuAdmListaP;
+	private JMenuItem jMenuItemBajaProveedor;
+	private JMenuItem jMenuItemModificacionProveedor;
+	private JMenu jMenuAdmProveedores;
+	private JMenuItem jMenuItemBajaStock;
+	private JMenuItem jMenuItemConsultarProveedor;
+
+	@Override
+	public void actualizar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+	public MenuPrincipal() {
+		super();
+		initGUI();
+	}
+	
+	private void initGUI() {
+		try {
+			{
+				setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				this.setSize(630, 236);
+				this.setTitle("Casa Central Rodamientos");
+				getContentPane().setLayout(null);
+				this.setVisible(true);
+				{
+					jMenuBarMP = new JMenuBar();
+					setJMenuBar(jMenuBarMP);
+					{
+						jMenu1 = new JMenu();
+						jMenuBarMP.add(jMenu1);
+						jMenu1.setText("Adm. Stock");
+						{
+							jMenuItemAltaStock = new JMenuItem();
+							jMenu1.add(jMenuItemAltaStock);
+							jMenuItemAltaStock.setText("Alta de Stock");
+							jMenuItemAltaStock.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelAltaStock();
+
+								}
+
+							});
+						}
+						{
+							jMenuItemBajaStock = new JMenuItem();
+							jMenu1.add(jMenuItemBajaStock);
+							jMenuItemBajaStock.setText("Baja de Stock");
+							jMenuItemBajaStock.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelBajaStock();
+
+								}
+
+							});
+						}
+						{
+							jMenuItemConStock = new JMenuItem();
+							jMenu1.add(jMenuItemConStock);
+							jMenuItemConStock.setText("Consultar Stock");
+							jMenuItemConStock.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelConsultaStock();
+
+								}
+
+							});
+							
+						}
+					}
+					{
+						jMenuAdmProveedores = new JMenu();
+						jMenuBarMP.add(jMenuAdmProveedores);
+						jMenuAdmProveedores.setText("Adm. Proveedores");
+						{
+							jMenuItemAltaProveedor = new JMenuItem();
+							jMenuAdmProveedores.add(jMenuItemAltaProveedor);
+							jMenuItemAltaProveedor.setText("Alta Proveedor");
+							jMenuItemAltaProveedor.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelAltaProveedor();
+
+								}
+
+							});
+						}
+						{
+							jMenuItemModificacionProveedor = new JMenuItem();
+							jMenuAdmProveedores.add(jMenuItemModificacionProveedor);
+							jMenuItemModificacionProveedor.setText("Modificacion Proveedor");
+							jMenuItemModificacionProveedor.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelModificarProveedor();
+
+								}
+
+							});
+						}
+						{
+							jMenuItemBajaProveedor = new JMenuItem();
+							jMenuAdmProveedores.add(jMenuItemBajaProveedor);
+							jMenuItemBajaProveedor.setText("Baja Proveedor");
+							jMenuItemBajaProveedor.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelBajaProveedor();
+
+								}
+
+							});
+						}
+						{
+							jMenuItemConsultarProveedor = new JMenuItem();
+							jMenuAdmProveedores.add(jMenuItemConsultarProveedor);
+							jMenuItemConsultarProveedor.setText("Consultar Proveedor");
+							jMenuItemConsultarProveedor.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelConsultarProveedor();
+
+								}
+
+							});
+
+						}
+					}
+					{
+						jMenuAdmListaP = new JMenu();
+						jMenuBarMP.add(jMenuAdmListaP);
+						jMenuAdmListaP.setText("Adm. Lista Precios");
+						{
+							jMenuItemAltaLista = new JMenuItem();
+							jMenuAdmListaP.add(jMenuItemAltaLista);
+							jMenuItemAltaLista.setText("Alta Lista de Precios");
+							jMenuItemAltaLista.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) 
+								{
+									abrirPanelAltaListaPrecios();
+
+								}
+
+							});
+						}
+					}
+					{
+						jMenuCompraRodamiento = new JMenu();
+						jMenuBarMP.add(jMenuCompraRodamiento);
+						jMenuCompraRodamiento.setText("Compra Rodamientos");
+						{
+							jMenuItemConfirmarCompraRec = new JMenuItem();
+							jMenuCompraRodamiento.add(jMenuItemConfirmarCompraRec);
+							jMenuItemConfirmarCompraRec.setText("Confirmar Compra Recibida");
+						}
+					}
+					{
+						jMenuGanancia = new JMenu();
+						jMenuBarMP.add(jMenuGanancia);
+						jMenuGanancia.setText("Ganancia");
+						{
+							jMenuItemPorcentajeGanancia = new JMenuItem();
+							jMenuGanancia.add(jMenuItemPorcentajeGanancia);
+							jMenuItemPorcentajeGanancia.setText("Establecer % Ganancia");
+							jMenuItemPorcentajeGanancia.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) 
+							{
+								abrirPanelPorcentajeGanancia();
+
+							}
+
+
+							});
+						}
+					}
+					{
+						jMenuSalir = new JMenu();
+						jMenuBarMP.add(jMenuSalir);
+						jMenuSalir.setText("Salir");
+						{
+							jMenuItemSalir = new JMenuItem();
+							jMenuSalir.add(jMenuItemSalir);
+							jMenuItemSalir.setText("Salir");
+							jMenuItemSalir.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent evt) {
+									dispose();
+									}	
+								} 
+							);
+						}
+					}
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void abrirPanelAltaProveedor() {
+		// TODO Auto-generated method stub
+		try {
+			ProveedorAlta v = new ProveedorAlta();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmProveedores(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	private void abrirPanelBajaProveedor() {
+		// TODO Auto-generated method stub
+		try {
+			ProveedorBaja v = new ProveedorBaja();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmProveedores(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	private void abrirPanelModificarProveedor() {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+		try {
+			ProveedorModificar v = new ProveedorModificar();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmProveedores(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+	}
+	
+	private void abrirPanelConsultarProveedor() {
+		// TODO Auto-generated method stub
+		try {
+			ProveedorConsulta v = new ProveedorConsulta();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmProveedores(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	
+	private void abrirPanelPorcentajeGanancia() {
+		// TODO Auto-generated method stub
+		try {
+			EstablecerGanancia v = new EstablecerGanancia();
+			Vista v1 = v;
+			Controlador c = new ControladorGanancia(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	private void abrirPanelAltaListaPrecios() {
+		// TODO Auto-generated method stub
+		try {
+			ListaPreciosAlta v = new ListaPreciosAlta();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmListasPrecios(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+	}
+	
+	private void abrirPanelAltaStock() {
+		// TODO Auto-generated method stub
+		try {
+			StockAlta v = new StockAlta();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmStock(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	private void abrirPanelBajaStock() {
+		// TODO Auto-generated method stub
+		try {
+			StockBaja v = new StockBaja();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmStock(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	private void abrirPanelConsultaStock() {
+		// TODO Auto-generated method stub
+		try {
+			StockConsulta v = new StockConsulta();
+			Vista v1 = v;
+			Controlador c = new ControladorAdmStock(v1);
+			v1.addControlador(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	/**
+	* This method should return an instance of this class which does 
+	* NOT initialize it's GUI elements. This method is ONLY required by
+	* Jigloo if the superclass of this class is abstract or non-public. It 
+	* is not needed in any other situation.
+	 */
+	public static Object getGUIBuilderInstance() {
+		return new MenuPrincipal(Boolean.FALSE);
+	}
+	
+	/**
+	 * This constructor is used by the getGUIBuilderInstance method to
+	 * provide an instance of this class which has not had it's GUI elements
+	 * initialized (ie, initGUI is not called in this constructor).
+	 */
+	public MenuPrincipal(Boolean initGUI) {
+		super();
+	}
+	
+}

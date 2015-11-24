@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RodamientoCotizadoVO {
+public class RodamientoCotizadoVO implements Serializable {
 	private int id;
 	private RodamientoVO rodamiento;
 	private float precioUnit;

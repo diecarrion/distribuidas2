@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ItemFacturaVO {
+public class ItemFacturaVO implements Serializable {
 	private int id;
 	private int cantidad;
 	private float precioUnitario;

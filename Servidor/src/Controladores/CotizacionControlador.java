@@ -18,7 +18,7 @@ public class CotizacionControlador {
 		return controlador;
 	}
 	
-	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException
+	/*public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException
 	{
 		List<RodamientoCotizadoVO> rodCotizados = new ArrayList<RodamientoCotizadoVO>();
 		Cliente c = ClienteSRV.buscarCliente(idCliente);
@@ -45,5 +45,5 @@ public class CotizacionControlador {
 		}
 			
 		return null;
-	}
+	}*/
 }

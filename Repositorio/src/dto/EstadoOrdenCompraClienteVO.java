@@ -1,6 +1,8 @@
 package dto;
 
-public class EstadoOrdenCompraClienteVO {
+import java.io.Serializable;
+
+public class EstadoOrdenCompraClienteVO implements Serializable {
 	private String estado;
 	private OrdenCompraClienteVO ordenCliente;
 	private OrdenCompraProveedorVO ordenProveedor;

@@ -1,10 +1,11 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 
-public class BultoCCVO {
+public class BultoCCVO implements Serializable {
 	private int id;
 	private Date fecha;
 	private RemitoTransporteVO remito;

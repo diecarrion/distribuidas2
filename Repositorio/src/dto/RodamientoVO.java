@@ -1,6 +1,8 @@
 package dto;
 
-public class RodamientoVO {
+import java.io.Serializable;
+
+public class RodamientoVO implements Serializable {
 
 	private String codigoFabricante;
 	private String codigoSKF;
@@ -9,7 +11,6 @@ public class RodamientoVO {
 	private String origen;
 	
 	public RodamientoVO() {
-
 	}
 	
 	public RodamientoVO(String codigoSKF, String caracteristicas, String marca, String origen){

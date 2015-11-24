@@ -1,9 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.*;
-import java.util.List;
 
-public class FacturaVO {
+public class FacturaVO implements Serializable {
 
 	private int id;
 	private Date fecha;

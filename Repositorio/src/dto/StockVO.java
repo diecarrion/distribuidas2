@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StockVO {
+public class StockVO implements Serializable {
 	private int id;
 	private int cantidad;
 	private float precioUnitario;

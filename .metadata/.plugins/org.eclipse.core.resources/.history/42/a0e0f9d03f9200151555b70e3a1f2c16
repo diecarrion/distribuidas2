@@ -1,0 +1,27 @@
+package Controladores;
+
+
+public abstract class Controlador {
+	
+	private ProxyModelo p;
+	
+	public Controlador()
+	{
+		super();
+		try {
+			p = new ProxyModeloConcreto();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	public ProxyModelo getModelo()
+	{
+		return p;
+	}
+	
+	public Vista getVista()
+	{
+		return null;
+	}
+	
+}

@@ -14,7 +14,6 @@
 <fullyQualifiedTypeName name="dto.OrdenCompraClienteVO"/>
 <fullyQualifiedTypeName name="dto.BultoCCVO"/>
 <fullyQualifiedTypeName name="dto.RemitoProveedorVO"/>
-<fullyQualifiedTypeName name="java.rmi.RemoteException"/>
 <fullyQualifiedTypeName name="dto.ComparativaPrecioVO"/>
 <fullyQualifiedTypeName name="dto.RemitoTransporteVO"/>
 <fullyQualifiedTypeName name="bean.srv.OficinaVentaSRV"/>
@@ -24,7 +23,6 @@
 <fullyQualifiedTypeName name="entities.Cliente"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="entities.ListaPrecio"/>
-<fullyQualifiedTypeName name="dto.ListaPrecioVO"/>
 <fullyQualifiedTypeName name="entities.RodamientoCotizado"/>
 <fullyQualifiedTypeName name="dto.RodamientoVO"/>
 <fullyQualifiedTypeName name="bean.srv.ComparativaPrecioSRV"/>
@@ -36,8 +34,15 @@
 <fullyQualifiedTypeName name="dto.RodamientoCotizadoVO"/>
 <fullyQualifiedTypeName name="dto.FacturaVO"/>
 <fullyQualifiedTypeName name="javax.persistence.PrimaryKeyJoinColumn"/>
-<fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="bean.srv.ProveedorSRV"/>
 <fullyQualifiedTypeName name="Controladores.ProveedorControlador"/>
 <fullyQualifiedTypeName name="dto.ProveedorVO"/>
+<fullyQualifiedTypeName name="bean.dao.OrdenCompraClienteDAO"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.RepositoryIdHelper"/>
+<fullyQualifiedTypeName name="dto.ListaPrecioDetalleVO"/>
+<fullyQualifiedTypeName name="dto.ListaPrecioVO"/>
+<fullyQualifiedTypeName name="java.rmi.RemoteException"/>
+<fullyQualifiedTypeName name="businessDelegate.BusinessDelegate"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="java.rmi.registry.Registry"/>
 </qualifiedTypeNameHistroy>

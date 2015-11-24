@@ -1,10 +1,11 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class RemitoProveedorVO {
+public class RemitoProveedorVO implements Serializable {
 	private int id;
 	private Date fecha;
 	private ProveedorVO proveedor;

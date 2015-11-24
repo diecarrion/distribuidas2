@@ -33,7 +33,8 @@ public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote
 	
 	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException
 	{
-		return CotizacionControlador.getControlador().generarCotizacion(idCliente, listaRodamientos, validez);
+		//return CotizacionControlador.getControlador().generarCotizacion(idCliente, listaRodamientos, validez);
+		return null;
 	}
 	
 	public OrdenCompraClienteVO generarVenta(int idCliente, int idCotizacion, Date fechaVenta) throws RemoteException
@@ -69,8 +70,9 @@ public class SistemaRemote extends UnicastRemoteObject implements ISistemaRemote
 	
 	public void alta_listaPrecio(ListaPrecioVO lp) throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println("Llegue acá puto de mierda");
 		ListaPrecio lpre = new ListaPrecio();
-		int idProveedor = lp.getProveedor().getId();
+		int idProveedor = lp.getProveedorId();
 		Proveedor p = new ProveedorSRV().buscarProveedor(idProveedor);
 		if (p!=null){
 			lpre.setId(lp.getId());

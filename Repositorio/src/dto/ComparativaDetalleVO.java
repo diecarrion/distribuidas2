@@ -1,6 +1,8 @@
 package dto;
 
-public class ComparativaDetalleVO {
+import java.io.Serializable;
+
+public class ComparativaDetalleVO implements Serializable {
 	
 
 	private int IdListaPrecio;

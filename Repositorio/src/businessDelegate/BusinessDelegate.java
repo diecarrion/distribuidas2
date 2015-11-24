@@ -22,12 +22,14 @@ private ISistemaRemote sistemaRemote;
     	try {
     		
     		sistemaRemote = (ISistemaRemote)Naming.lookup ("//localhost/Sistema");
+    		System.out.println("Conectado al Servidor //localhost/Sistema");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
     }
+	
 	
 	public CotizacionVO generarCotizacion(int idCliente, List<RodamientoCotizadoVO> listaRodamientos, Date validez) throws RemoteException
 	{
@@ -66,7 +68,17 @@ private ISistemaRemote sistemaRemote;
 	
 	//Casa Central
 	
-
+	public void alta_listaPrecio(ListaPrecioVO lp) throws RemoteException 
+	{
+		try
+		{
+		 sistemaRemote.alta_listaPrecio(lp);
+		}
+		catch(RemoteException rex)
+		{
+			rex.printStackTrace();
+		}
+	}
 	public RemitoTransporteVO buscarRemito(int idRemito) throws RemoteException
 	{
 		return new RemitoTransporteVO();

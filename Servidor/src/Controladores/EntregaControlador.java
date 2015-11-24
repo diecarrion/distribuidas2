@@ -32,7 +32,7 @@ public class EntregaControlador {
 			if(idsOrdenCompra.size() !=0)
 			{
 				//primer bulto
-				OrdenCompraCliente oc = OrdenCompraSRV.buscarOrdenCompra(idsOrdenCompra.get(0));
+				OrdenCompraCliente oc = OrdenCompraSRV.buscarOrdenCompraCliente(idsOrdenCompra.get(0));
 				BultoOV newBulto = new BultoOV(oc.getFecha(),oc.getOficinaVenta(), oc.getCliente(), oc.getRemitoCliente());
 				newBulto.addOrdenCompraCliente(oc);
 				bultosaEntregar.add(newBulto);
@@ -41,7 +41,7 @@ public class EntregaControlador {
 				//desde la segunda OC en adelante
 				for (int id = 1; id < idsOrdenCompra.size(); id++)
 				{
-					oc = OrdenCompraSRV.buscarOrdenCompra(id);
+					oc = OrdenCompraSRV.buscarOrdenCompraCliente(id);
 					for(BultoOV bulto : bultosaEntregar)
 					{
 						//si es el mismo cliente, agrego OC al bulto, sino creo uno nuevo

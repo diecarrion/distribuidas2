@@ -107,13 +107,5 @@ static CasaCentralControlador controlador;
 		return null;
 	}
 	
-	public void altaStock(int idRodamiento, int cantidadInicial, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
-	{
-	}
-	
-	public void actualizarStock(int idRodamiento, int cantidad, float precioUnidad, int idOrdenCompraProveedor) throws RemoteException
-	{
-	}
-	
 
 }

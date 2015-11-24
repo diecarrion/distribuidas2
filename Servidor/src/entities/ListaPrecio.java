@@ -62,7 +62,7 @@ public class ListaPrecio {
 	}
 	
 	public ListaPrecioVO toVO(){
-		return new ListaPrecioVO(this.getId(),this.getFechaVigenciaDesde(),this.getFechaVigenciaHasta(), this.getProveedor().toVO());
+		return new ListaPrecioVO(this.getId(),this.getFechaVigenciaDesde(),this.getFechaVigenciaHasta(), this.getProveedor().getId());
 	}
 
 

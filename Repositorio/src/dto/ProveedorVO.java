@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProveedorVO {
+public class ProveedorVO implements Serializable{
 	private int id;
 	private String identificacion;
 	private String telefono;
@@ -13,7 +14,7 @@ public class ProveedorVO {
 	private List<RemitoProveedorVO> remitos;
 	
 	public ProveedorVO() {
-
+			super();
 	}
 
 	public ProveedorVO(int id, String identificacion, String cuit, String telefono,

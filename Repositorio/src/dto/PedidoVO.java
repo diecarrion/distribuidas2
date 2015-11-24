@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class PedidoVO {
+public class PedidoVO implements Serializable {
 	
 	private int id;
 	private Date fecha;
